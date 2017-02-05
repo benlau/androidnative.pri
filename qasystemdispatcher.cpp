@@ -16,7 +16,7 @@ QString QASystemDispatcher::ACTIVITY_RESULT_MESSAGE = "Activity.onActivityResult
 #include <QAndroidJniObject>
 #include <QAndroidJniEnvironment>
 
-#define JCLASS_Name "quickandroid/SystemDispatcher"
+#define JCLASS_Name "androidnative/SystemDispatcher"
 #define DISPATCH_SIGNATURE "(Ljava/lang/String;Ljava/util/Map;)V"
 #define EMIT_SIGNATURE "(Ljava/lang/String;Ljava/util/Map;)V"
 
