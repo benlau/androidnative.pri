@@ -4,7 +4,7 @@
         android:name="org.qtproject.qt5.android.bindings.QtApplication"
         android:label="Quick Android Example" android:icon="@drawable/icon">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation"
-                  android:name="quickandroid.QuickAndroidActivity"
+                  android:name="androidnative.QuickAndroidActivity"
                   android:label="Quick Android Example"
                   android:theme="@style/AppTheme"
                   android:screenOrientation="unspecified"
