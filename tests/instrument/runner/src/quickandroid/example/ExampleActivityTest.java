@@ -289,7 +289,7 @@ public class ExampleActivityTest extends ActivityInstrumentationTestCase2<QuickA
         SystemDispatcher.addListener(listener);
         SystemDispatcher.dispatch("Automater::echo", message);
 
-        sleep(500);
+        sleep(1500);
 
         assertTrue(lastPayload != null);
         assertTrue(lastPayload.message.containsKey("list"));

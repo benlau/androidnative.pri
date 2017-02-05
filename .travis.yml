@@ -53,7 +53,7 @@ script:
     - adb shell am instrument -w quickandroid.example.tests/android.test.InstrumentationTestRunner 2>&1 | tee instrument.log
     - adb logcat -d > log.txt
     - sed -i "/dalvikvm/d" log.txt
-    - tail -n 1000 log.txt
+    - tail -n 500 log.txt
     - OK=`cat instrument.log | grep -G "^OK" | wc -l`
     - echo $OK
     - if [ $OK -eq 0 ]; then echo "Test failure found"; exit 1; fi
