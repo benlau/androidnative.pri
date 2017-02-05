@@ -310,7 +310,7 @@ void QASystemDispatcher::loadClass(QString javaClassName)
     QVariantMap message;
     message["className"] = javaClassName;
 
-    dispatch("quickandroid.SystemDispatcher.loadClass",message);
+    dispatch("androidnative.SystemDispatcher.loadClass",message);
 }
 
 void QASystemDispatcher::registerNatives()
