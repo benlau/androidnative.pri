@@ -6,7 +6,6 @@
 #include "quickandroid.h"
 #include "qadrawableprovider.h"
 #include "qasystemdispatcher.h"
-#include "automator.h"
 
 #ifdef Q_OS_ANDROID
 #include <QtAndroidExtras/QAndroidJniObject>
@@ -50,10 +49,6 @@ int main(int argc, char *argv[])
     provider->setBasePath("qrc://res");
     engine.addImageProvider("drawable",provider);
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
-
-    /* Testing Code. Not needed for regular project */
-    Automator* automator = new Automator();
-    automator->start();
 
     qDebug() << "Start QuickAndroid Example Program";
 

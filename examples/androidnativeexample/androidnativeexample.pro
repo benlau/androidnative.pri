@@ -2,8 +2,7 @@ TEMPLATE = app
 
 QT += qml quick
 
-SOURCES += main.cpp \
-    automator.cpp
+SOURCES += main.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,5 +32,4 @@ DISTFILES += \
     android-sources/settings.gradle
 
 HEADERS += \
-    automator.h \
     ../../README.md
