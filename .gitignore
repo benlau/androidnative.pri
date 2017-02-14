@@ -39,3 +39,4 @@ gradle.properties
 .build
 .gradle
 *.iml
+vendor

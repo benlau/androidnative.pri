@@ -14,8 +14,7 @@ android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 }
 
-include(../../quickandroid.pri)
-
+include(vendor/vendor.pri)
 # Default rules for deployment.
 include(deployment.pri)
 
