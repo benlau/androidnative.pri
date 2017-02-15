@@ -16,14 +16,17 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void*) {
     qDebug("NativeInterface::JNI_OnLoad()");
 
     // It must call this function within JNI_OnLoad to enable System Dispatcher
-    QASystemDispatcher::registerNatives();
+//    QASystemDispatcher::registerNatives();
 
     /* Optional: Register your own service */
 
     // Call quickandroid.example.ExampleService.start()
+
+/*
     QAndroidJniObject::callStaticMethod<void>("quickandroid/example/ExampleService",
                                               "start",
                                               "()V");
+*/
 
     return JNI_VERSION_1_6;
 }

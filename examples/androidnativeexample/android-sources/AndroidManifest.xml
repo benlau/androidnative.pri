@@ -4,8 +4,8 @@
         android:name="org.qtproject.qt5.android.bindings.QtApplication"
         android:label="Quick Android Example" android:icon="@drawable/icon">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation"
-                  android:name="quickandroid.QuickAndroidActivity"
-                  android:label="Quick Android Example"
+                  android:name="androidnative.AndroidNativeActivity"
+                  android:label="Android Native Example"
                   android:theme="@style/AppTheme"
                   android:screenOrientation="unspecified"
                   android:launchMode="singleTop">
@@ -13,7 +13,7 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <meta-data android:name="android.app.lib_name" android:value="quickandroidexample"/>
+            <meta-data android:name="android.app.lib_name" android:value="androidnativeexample"/>
             <meta-data android:name="android.app.qt_sources_resource_id" android:resource="@array/qt_sources"/>
             <meta-data android:name="android.app.repository" android:value="default"/>
             <meta-data android:name="android.app.qt_libs_resource_id" android:resource="@array/qt_libs"/>

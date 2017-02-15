@@ -1,6 +1,4 @@
 package androidnative;
-import org.qtproject.qt5.android.QtNative;
-
 import android.content.Intent;
 
 /** An alternative Activity class for Qt applicaiton.
@@ -8,7 +6,7 @@ import android.content.Intent;
   Remarks: It is recommended but not a must to use this class as the main activity.
  */
 
-public class QuickAndroidActivity extends org.qtproject.qt5.android.bindings.QtActivity {
+public class AndroidNativeActivity extends org.qtproject.qt5.android.bindings.QtActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -40,3 +40,6 @@ gradle.properties
 .gradle
 *.iml
 vendor
+tests/instrument/build
+build
+*.swp

@@ -70,7 +70,7 @@ android {
         main {
             manifest.srcFile 'AndroidManifest.xml'
             java.srcDirs = [qt5AndroidDir + '/src', 'src', 'java',
-                            androidPackageSourceDir + '/../../../java']
+                            androidPackageSourceDir + '/../../../java/src']
             aidl.srcDirs = [qt5AndroidDir + '/src', 'src', 'aidl']
             res.srcDirs = [qt5AndroidDir + '/res', 'res']
             resources.srcDirs = ['src']
@@ -79,7 +79,6 @@ android {
             jniLibs.srcDirs = ['libs']
        }
     }
-
     lintOptions {
         abortOnError false
     }
