@@ -5,7 +5,7 @@
 #include <QQmlContext>
 #include "quickandroid.h"
 #include "qadrawableprovider.h"
-#include "AndroidNative/ansystemdispatcher.h"
+#include "AndroidNative/systemdispatcher.h"
 
 #ifdef Q_OS_ANDROID
 #include <QtAndroidExtras/QAndroidJniObject>

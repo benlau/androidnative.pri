@@ -4,12 +4,14 @@
 #include <QtCore>
 #include <QPair>
 #include <QQueue>
-#include "ansystemdispatcher.h"
+#include "systemdispatcher.h"
 
-static QPointer<ANSystemDispatcher> m_instance;
+using namespace AndroidNative;
 
-QString ANSystemDispatcher::ACTIVITY_RESUME_MESSAGE = "Activity.onResume";
-QString ANSystemDispatcher::ACTIVITY_RESULT_MESSAGE = "Activity.onActivityResult";
+static QPointer<SystemDispatcher> m_instance;
+
+QString SystemDispatcher::ACTIVITY_RESUME_MESSAGE = "Activity.onResume";
+QString SystemDispatcher::ACTIVITY_RESULT_MESSAGE = "Activity.onActivityResult";
 
 
 #ifdef Q_OS_ANDROID
@@ -250,26 +252,26 @@ static void jniEmit(JNIEnv* env,jobject object,jstring name,jobject data) {
 
 #endif
 
-ANSystemDispatcher::ANSystemDispatcher(QObject* parent) : QObject(parent)
+AndroidNative::SystemDispatcher::SystemDispatcher(QObject* parent) : QObject(parent)
 {
 
 }
 
-ANSystemDispatcher::~ANSystemDispatcher()
+AndroidNative::SystemDispatcher::~SystemDispatcher()
 {
 
 }
 
-ANSystemDispatcher *ANSystemDispatcher::instance()
+AndroidNative::SystemDispatcher *SystemDispatcher::instance()
 {
     if (!m_instance) {
         QCoreApplication* app = QCoreApplication::instance();
-        m_instance = new ANSystemDispatcher(app);
+        m_instance = new SystemDispatcher(app);
     }
     return m_instance;
 }
 
-void ANSystemDispatcher::dispatch(QString type, QVariantMap message)
+void AndroidNative::SystemDispatcher::dispatch(QString type, QVariantMap message)
 {
     Q_UNUSED(type);
     Q_UNUSED(message);
@@ -305,7 +307,7 @@ void ANSystemDispatcher::dispatch(QString type, QVariantMap message)
 #endif
 }
 
-void ANSystemDispatcher::loadClass(QString javaClassName)
+void AndroidNative::SystemDispatcher::loadClass(QString javaClassName)
 {
     QVariantMap message;
     message["className"] = javaClassName;
@@ -313,7 +315,7 @@ void ANSystemDispatcher::loadClass(QString javaClassName)
     dispatch("androidnative.SystemDispatcher.loadClass",message);
 }
 
-void ANSystemDispatcher::registerNatives()
+void AndroidNative::SystemDispatcher::registerNatives()
 {
 #ifdef Q_OS_ANDROID
     QAndroidJniEnvironment env;

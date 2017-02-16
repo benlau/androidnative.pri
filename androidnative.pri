@@ -6,10 +6,10 @@ RESOURCES += \
     $$PWD/androidnative.qrc
 
 HEADERS += \
-    $$PWD/cpp/AndroidNative/priv/ansystemdispatcherproxy.h \
-    $$PWD/cpp/AndroidNative/ansystemdispatcher.h
+    $$PWD/cpp/AndroidNative/priv/systemdispatcherproxy.h \
+    $$PWD/cpp/AndroidNative/systemdispatcher.h
 
 SOURCES += \
-    $$PWD/cpp/AndroidNative/ansystemdispatcher.cpp \
-    $$PWD/cpp/AndroidNative/priv/ansystemdispatcherproxy.cpp
+    $$PWD/cpp/AndroidNative/priv/systemdispatcherproxy.cpp \
+    $$PWD/cpp/AndroidNative/systemdispatcher.cpp
 
