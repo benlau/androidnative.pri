@@ -1,14 +1,15 @@
 
 QML_IMPORT_PATH += $$PWD
 
-INCLUDEPATH += $$PWD
+INCLUDEPATH += $$PWD/cpp
 RESOURCES += \
     $$PWD/androidnative.qrc
 
 HEADERS += \
-    $$PWD/ansystemdispatcher.h \
-    $$PWD/priv/ansystemdispatcherproxy.h
+    $$PWD/cpp/AndroidNative/priv/ansystemdispatcherproxy.h \
+    $$PWD/cpp/AndroidNative/ansystemdispatcher.h
 
 SOURCES += \
-    $$PWD/ansystemdispatcher.cpp \
-    $$PWD/priv/ansystemdispatcherproxy.cpp
+    $$PWD/cpp/AndroidNative/ansystemdispatcher.cpp \
+    $$PWD/cpp/AndroidNative/priv/ansystemdispatcherproxy.cpp
+

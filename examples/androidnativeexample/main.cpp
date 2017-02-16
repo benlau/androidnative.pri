@@ -5,7 +5,7 @@
 #include <QQmlContext>
 #include "quickandroid.h"
 #include "qadrawableprovider.h"
-#include "ansystemdispatcher.h"
+#include "AndroidNative/ansystemdispatcher.h"
 
 #ifdef Q_OS_ANDROID
 #include <QtAndroidExtras/QAndroidJniObject>
@@ -52,8 +52,6 @@ int main(int argc, char *argv[])
     provider->setBasePath("qrc://res");
     engine.addImageProvider("drawable",provider);
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
-
-    qDebug() << "Start QuickAndroid Example Program";
 
     return app.exec();
 }
