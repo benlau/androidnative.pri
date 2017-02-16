@@ -4,6 +4,7 @@
 #include <QVariantMap>
 
 namespace AndroidNative {
+
     class SystemDispatcherProxy : public QObject
     {
         Q_OBJECT

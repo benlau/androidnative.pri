@@ -7,7 +7,7 @@
                   android:name="androidnative.AndroidNativeActivity"
                   android:label="Android Native Example"
                   android:theme="@style/AppTheme"
-                  android:screenOrientation="unspecified"
+                  android:screenOrientation="portrait"
                   android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

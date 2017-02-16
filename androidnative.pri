@@ -7,9 +7,11 @@ RESOURCES += \
 
 HEADERS += \
     $$PWD/cpp/AndroidNative/priv/systemdispatcherproxy.h \
-    $$PWD/cpp/AndroidNative/systemdispatcher.h
+    $$PWD/cpp/AndroidNative/systemdispatcher.h \
+    $$PWD/cpp/AndroidNative/environment.h
 
 SOURCES += \
     $$PWD/cpp/AndroidNative/priv/systemdispatcherproxy.cpp \
-    $$PWD/cpp/AndroidNative/systemdispatcher.cpp
+    $$PWD/cpp/AndroidNative/systemdispatcher.cpp \
+    $$PWD/cpp/AndroidNative/environment.cpp
 
