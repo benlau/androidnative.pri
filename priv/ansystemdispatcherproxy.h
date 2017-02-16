@@ -4,12 +4,12 @@
 #include <QObject>
 #include <QVariantMap>
 
-class QASystemDispatcherProxy : public QObject
+class ANSystemDispatcherProxy : public QObject
 {
     Q_OBJECT
 public:
-    explicit QASystemDispatcherProxy(QObject *parent = 0);
-    ~QASystemDispatcherProxy();
+    explicit ANSystemDispatcherProxy(QObject *parent = 0);
+    ~ANSystemDispatcherProxy();
 
     Q_INVOKABLE void dispatch(QString type, QVariantMap message = QVariantMap());
 

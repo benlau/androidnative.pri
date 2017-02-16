@@ -3,10 +3,8 @@
 #include <QQmlApplicationEngine>
 #include <QQuickView>
 #include <QQmlContext>
-#include "quickandroid.h"
-#include "qadrawableprovider.h"
-#include "qasystemdispatcher.h"
 #include "automator.h"
+#include "ansystemdispatcher.h"
 
 #ifdef Q_OS_ANDROID
 #include <QtAndroidExtras/QAndroidJniObject>
@@ -17,7 +15,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void*) {
     qDebug("NativeInterface::JNI_OnLoad()");
 
     // It must call this function within JNI_OnLoad to enable System Dispatcher
-    QASystemDispatcher::registerNatives();
+    ANSystemDispatcher::registerNatives();
 
     /* Optional: Register your own service */
 
@@ -42,8 +40,6 @@ int main(int argc, char *argv[])
     /* Testing Code. Not needed for regular project */
     Automator* automator = new Automator();
     automator->start();
-
-    qDebug() << "Start QuickAndroid Example Program";
 
     return app.exec();
 }

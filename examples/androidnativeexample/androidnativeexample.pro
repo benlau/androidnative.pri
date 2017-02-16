@@ -17,6 +17,7 @@ android {
 include(vendor/vendor.pri)
 # Default rules for deployment.
 include(deployment.pri)
+include(../../androidnative.pri)
 
 DISTFILES += \
     android-sources/AndroidManifest.xml \

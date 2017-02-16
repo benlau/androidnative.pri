@@ -4,12 +4,12 @@
 #include <QtCore>
 #include <QPair>
 #include <QQueue>
-#include "qasystemdispatcher.h"
+#include "ansystemdispatcher.h"
 
-static QPointer<QASystemDispatcher> m_instance;
+static QPointer<ANSystemDispatcher> m_instance;
 
-QString QASystemDispatcher::ACTIVITY_RESUME_MESSAGE = "Activity.onResume";
-QString QASystemDispatcher::ACTIVITY_RESULT_MESSAGE = "Activity.onActivityResult";
+QString ANSystemDispatcher::ACTIVITY_RESUME_MESSAGE = "Activity.onResume";
+QString ANSystemDispatcher::ACTIVITY_RESULT_MESSAGE = "Activity.onActivityResult";
 
 
 #ifdef Q_OS_ANDROID
@@ -250,26 +250,26 @@ static void jniEmit(JNIEnv* env,jobject object,jstring name,jobject data) {
 
 #endif
 
-QASystemDispatcher::QASystemDispatcher(QObject* parent) : QObject(parent)
+ANSystemDispatcher::ANSystemDispatcher(QObject* parent) : QObject(parent)
 {
 
 }
 
-QASystemDispatcher::~QASystemDispatcher()
+ANSystemDispatcher::~ANSystemDispatcher()
 {
 
 }
 
-QASystemDispatcher *QASystemDispatcher::instance()
+ANSystemDispatcher *ANSystemDispatcher::instance()
 {
     if (!m_instance) {
         QCoreApplication* app = QCoreApplication::instance();
-        m_instance = new QASystemDispatcher(app);
+        m_instance = new ANSystemDispatcher(app);
     }
     return m_instance;
 }
 
-void QASystemDispatcher::dispatch(QString type, QVariantMap message)
+void ANSystemDispatcher::dispatch(QString type, QVariantMap message)
 {
     Q_UNUSED(type);
     Q_UNUSED(message);
@@ -305,7 +305,7 @@ void QASystemDispatcher::dispatch(QString type, QVariantMap message)
 #endif
 }
 
-void QASystemDispatcher::loadClass(QString javaClassName)
+void ANSystemDispatcher::loadClass(QString javaClassName)
 {
     QVariantMap message;
     message["className"] = javaClassName;
@@ -313,7 +313,7 @@ void QASystemDispatcher::loadClass(QString javaClassName)
     dispatch("androidnative.SystemDispatcher.loadClass",message);
 }
 
-void QASystemDispatcher::registerNatives()
+void ANSystemDispatcher::registerNatives()
 {
 #ifdef Q_OS_ANDROID
     QAndroidJniEnvironment env;

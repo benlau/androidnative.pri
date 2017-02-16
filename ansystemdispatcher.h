@@ -5,12 +5,12 @@
 
 /// QASystemDispatcher provides an simple messaging interface between C/C++/QML and Java code.
 
-class QASystemDispatcher : public QObject
+class ANSystemDispatcher : public QObject
 {
     Q_OBJECT
 public:
-    ~QASystemDispatcher();
-    static QASystemDispatcher* instance();
+    ~ANSystemDispatcher();
+    static ANSystemDispatcher* instance();
 
     /// Dispatch a message via Dispatcher
     /** The message will be first passed to Java's SystemDispatcher and invoke
@@ -41,7 +41,7 @@ signals:
     void dispatched(QString type , QVariantMap message);
 
 private:
-    explicit QASystemDispatcher(QObject* parent = 0);
+    explicit ANSystemDispatcher(QObject* parent = 0);
 
 };
 

@@ -15,7 +15,7 @@ android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 }
 
-include(../../../quickandroid.pri)
+include(../../../androidnative.pri)
 
 DISTFILES += \
     android-sources/AndroidManifest.xml \
