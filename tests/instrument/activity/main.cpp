@@ -4,18 +4,20 @@
 #include <QQuickView>
 #include <QQmlContext>
 #include "automator.h"
-#include "ansystemdispatcher.h"
+#include "AndroidNative/systemdispatcher.h"
 
 #ifdef Q_OS_ANDROID
 #include <QtAndroidExtras/QAndroidJniObject>
 #include <QtAndroidExtras/QAndroidJniEnvironment>
+
+using namespace AndroidNative;
 
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void*) {
     Q_UNUSED(vm);
     qDebug("NativeInterface::JNI_OnLoad()");
 
     // It must call this function within JNI_OnLoad to enable System Dispatcher
-    ANSystemDispatcher::registerNatives();
+    SystemDispatcher::registerNatives();
 
     /* Optional: Register your own service */
 
