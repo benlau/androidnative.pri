@@ -7,6 +7,9 @@
 #include "qadrawableprovider.h"
 #include "AndroidNative/systemdispatcher.h"
 #include "AndroidNative/environment.h"
+#include "AndroidNative/debug.h"
+
+#include "debugwrapper.h"
 
 using namespace AndroidNative;
 
@@ -51,6 +54,8 @@ int main(int argc, char *argv[])
     /* QuickAndroid Initialization */
     engine.addImportPath("qrc:///"); // Add QuickAndroid into the import path
     engine.rootContext()->setContextProperty("Environment", env);
+    engine.rootContext()->setContextProperty("Debug", new DebugWrapper(&engine));
+
     /* End of QuickAndroid Initialization */
 
     // Extra features:
@@ -58,6 +63,8 @@ int main(int argc, char *argv[])
     provider->setBasePath("qrc://res");
     engine.addImageProvider("drawable",provider);
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
+
+    qDebug() << "Memory Usage" << Debug::getNativeHeapSize();
 
     return app.exec();
 }

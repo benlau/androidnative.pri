@@ -24,6 +24,20 @@ Page {
             interactive: false
             width: page.width
         }
+
+        ListItem {
+            title: "Debug.getNativeHeapSize"
+            subtitle: (Debug.getNativeHeapSize() / 1024 / 1024).toFixed(2) + "MB";
+            interactive: false
+            width: page.width
+        }
+
+        ListItem {
+            title: "Debug.getNativeHeapAllocatedSize"
+            subtitle: (Debug.getNativeHeapAllocatedSize() / 1024 / 1024).toFixed(2) + "MB";
+            interactive: false
+            width: page.width
+        }
     }
 
 

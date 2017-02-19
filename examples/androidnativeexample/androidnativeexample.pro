@@ -2,7 +2,8 @@ TEMPLATE = app
 
 QT += qml quick
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    debugwrapper.cpp
 
 RESOURCES += qml.qrc
 
@@ -32,4 +33,5 @@ DISTFILES += \
     android-sources/settings.gradle
 
 HEADERS += \
-    ../../README.md
+    ../../README.md \
+    debugwrapper.h
