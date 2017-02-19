@@ -5,14 +5,11 @@
 
 namespace AndroidNative {
 
-    class Environment
+    namespace Environment
     {
-    public:
-        Environment();
+        extern QString DIRECTORY_DCIM;
 
-        static QString DIRECTORY_DCIM;
-
-        static QString getExternalStoragePublicDirectory(const QString& path);
+        QString getExternalStoragePublicDirectory(const QString& path);
     };
 
 }

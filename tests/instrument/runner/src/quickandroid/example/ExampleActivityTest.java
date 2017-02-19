@@ -29,7 +29,7 @@ public class ExampleActivityTest extends ActivityInstrumentationTestCase2<Androi
     private static String TAG = "ActivityTest";
 
     public ExampleActivityTest() {
-        super(QuickAndroidActivity.class);
+        super(AndroidNativeActivity.class);
     }
 
     private static boolean launched = false;
@@ -41,7 +41,7 @@ public class ExampleActivityTest extends ActivityInstrumentationTestCase2<Androi
 
         Instrumentation instrumentation = getInstrumentation();
         Intent intent = new Intent(getInstrumentation()
-                .getTargetContext(), QuickAndroidActivity.class);
+                .getTargetContext(), AndroidNativeActivity.class);
         intent.setFlags(intent.getFlags()  | Intent.FLAG_ACTIVITY_NEW_TASK);
 
         mActivity = instrumentation.startActivitySync(intent);

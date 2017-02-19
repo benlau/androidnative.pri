@@ -8,11 +8,6 @@
 
 QString AndroidNative::Environment::DIRECTORY_DCIM = "DIRECTORY_DCIM";
 
-AndroidNative::Environment::Environment()
-{
-
-}
-
 QString AndroidNative::Environment::getExternalStoragePublicDirectory(const QString &type)
 {
     QString res;
