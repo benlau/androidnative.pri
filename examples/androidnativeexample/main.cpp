@@ -43,12 +43,14 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    qDebug() << "Environment.getExternalStoragePublicDirectory(DIRECTORY_DCIM)" << Environment::getExternalStoragePublicDirectory(Environment::DIRECTORY_DCIM);
+    QVariantMap env;
+    env["DIRECTORY_DCIM"] = Environment::getExternalStoragePublicDirectory(Environment::DIRECTORY_DCIM);
 
     QQmlApplicationEngine engine;
 
     /* QuickAndroid Initialization */
     engine.addImportPath("qrc:///"); // Add QuickAndroid into the import path
+    engine.rootContext()->setContextProperty("Environment", env);
     /* End of QuickAndroid Initialization */
 
     // Extra features:

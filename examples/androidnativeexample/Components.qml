@@ -8,9 +8,8 @@ Page {
     objectName: "ComponentPage";
 
     property var pages: [
-
         {
-            name : "Dialog",
+            name: "Dialog",
             demo: "dialog/DialogDemo.qml",
             description: "Dialog Component"
         },
@@ -22,8 +21,11 @@ Page {
             name: "Notification",
             demo: "notification/NotificationDemo.qml",
             description: "Notification"
+        },{
+            name: "Information",
+            demo: "info/InfoDemo.qml",
+            description: "Android System Information"
         }
-
     ];
 
     actionBar: ActionBar {

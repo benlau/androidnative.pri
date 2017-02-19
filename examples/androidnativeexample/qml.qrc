@@ -24,5 +24,6 @@
         <file>res/drawable-xxhdpi/ic_image.png</file>
         <file>res/drawable-xxhdpi/ic_camera.png</file>
         <file>imagePicker/ImagePickerDemo.qml</file>
+        <file>info/InfoDemo.qml</file>
     </qresource>
 </RCC>

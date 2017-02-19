@@ -1,4 +1,5 @@
 #include <QStandardPaths>
+#include <QDir>
 #include "environment.h"
 #ifdef Q_OS_ANDROID
 #include <QAndroidJniEnvironment>

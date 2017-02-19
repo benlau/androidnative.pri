@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import androidnative.QuickAndroidActivity;
+import androidnative.AndroidNativeActivity;
 import androidnative.SystemDispatcher;
 
 /**
@@ -24,7 +24,7 @@ import androidnative.SystemDispatcher;
  * -e class quickandroid.example.ExampleActivityTest \
  * quickandroid.example.tests/android.test.InstrumentationTestRunner
  */
-public class ExampleActivityTest extends ActivityInstrumentationTestCase2<QuickAndroidActivity> {
+public class ExampleActivityTest extends ActivityInstrumentationTestCase2<AndroidNativeActivity> {
 
     private static String TAG = "ActivityTest";
 
