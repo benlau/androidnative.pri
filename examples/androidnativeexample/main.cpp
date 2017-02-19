@@ -8,6 +8,7 @@
 #include "AndroidNative/systemdispatcher.h"
 #include "AndroidNative/environment.h"
 #include "AndroidNative/debug.h"
+#include "AndroidNative/mediascannerconnection.h"
 
 #include "debugwrapper.h"
 
@@ -49,6 +50,8 @@ int main(int argc, char *argv[])
     QVariantMap env;
     env["DIRECTORY_DCIM"] = Environment::getExternalStoragePublicDirectory(Environment::DIRECTORY_DCIM);
 
+    MediaScannerConnection::scanFile("");
+
     QQmlApplicationEngine engine;
 
     /* QuickAndroid Initialization */
@@ -63,8 +66,6 @@ int main(int argc, char *argv[])
     provider->setBasePath("qrc://res");
     engine.addImageProvider("drawable",provider);
     engine.load(QUrl(QStringLiteral("qrc:///main.qml")));
-
-    qDebug() << "Memory Usage" << Debug::getNativeHeapSize();
 
     return app.exec();
 }
