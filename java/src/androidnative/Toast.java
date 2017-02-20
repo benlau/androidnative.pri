@@ -14,9 +14,9 @@ public class Toast {
     static {
         SystemDispatcher.addListener(new SystemDispatcher.Listener() {
             public void onDispatched(String type, Map message) {
-                if (type.equals(TOAST_MESSAGE)) {
-                    showToast(message);
-                }
+            if (type.equals(TOAST_MESSAGE)) {
+                showToast(message);
+            }
             }
         });
     }

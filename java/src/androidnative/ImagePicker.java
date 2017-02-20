@@ -35,13 +35,13 @@ public class ImagePicker {
     static {
         SystemDispatcher.addListener(new SystemDispatcher.Listener() {
             public void onDispatched(String type , Map message) {
-                if (type.equals(PICK_IMAGE_MESSAGE)) {
-                    pickImage(message);
-                } else if (type.equals(TAKE_PHOTO_MESSAGE)) {
-                    takePhoto(message);
-                } else if (type.equals(SystemDispatcher.ACTIVITY_RESULT_MESSAGE)) {
-                    onActivityResult(message);
-                }
+            if (type.equals(PICK_IMAGE_MESSAGE)) {
+                pickImage(message);
+            } else if (type.equals(TAKE_PHOTO_MESSAGE)) {
+                takePhoto(message);
+            } else if (type.equals(SystemDispatcher.ACTIVITY_RESULT_MESSAGE)) {
+                onActivityResult(message);
+            }
             }
         });
     }

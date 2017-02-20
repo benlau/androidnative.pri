@@ -201,16 +201,15 @@ public class SystemDispatcher {
         }
    }
 
-
    public static void init() {
        SystemDispatcher.addListener(new SystemDispatcher.Listener() {
            public void onDispatched(String type , Map message) {
 //               Log.d(TAG,String.format("%s %b",type ,type.equals(SYSTEM_DISPATCHER_LOAD_CLASS_MESSAGE)));
 
-               if (type.equals(SYSTEM_DISPATCHER_LOAD_CLASS_MESSAGE)) {
-                   String className = (String) message.get("className");
-                   loadClass(className);
-               }
+           if (type.equals(SYSTEM_DISPATCHER_LOAD_CLASS_MESSAGE)) {
+               String className = (String) message.get("className");
+               loadClass(className);
+           }
            }
        });
 
