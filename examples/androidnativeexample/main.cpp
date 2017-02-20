@@ -24,17 +24,6 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void*) {
 
     // It must call this function within JNI_OnLoad to enable System Dispatcher
     SystemDispatcher::registerNatives();
-
-    /* Optional: Register your own service */
-
-    // Call quickandroid.example.ExampleService.start()
-
-/*
-    QAndroidJniObject::callStaticMethod<void>("quickandroid/example/ExampleService",
-                                              "start",
-                                              "()V");
-*/
-
     return JNI_VERSION_1_6;
 }
 #endif
@@ -51,6 +40,8 @@ int main(int argc, char *argv[])
     env["DIRECTORY_DCIM"] = Environment::getExternalStoragePublicDirectory(Environment::DIRECTORY_DCIM);
 
     MediaScannerConnection::scanFile("");
+
+    SystemDispatcher::instance()->loadClass("androidnative.example.ExampleService");
 
     QQmlApplicationEngine engine;
 

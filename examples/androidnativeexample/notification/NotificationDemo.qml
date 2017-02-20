@@ -2,6 +2,7 @@ import QtQuick 2.2
 import QtQuick.Window 2.1
 import QuickAndroid 0.1
 import QuickAndroid.Styles 0.1
+import AndroidNative 1.0 as AN
 import "../theme"
 
 Page {
@@ -14,19 +15,12 @@ Page {
         onActionButtonClicked: back();
     }
 
-    Text {
+    Button {
         id: label
         text : "Press to send notification"
-        anchors.fill: parent
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        type: Constants.largeText
-    }
-
-    MouseArea {
-        anchors.fill: parent
+        anchors.centerIn: parent
         onClicked: {
-            SystemDispatcher.dispatch("Notifier.notify",{
+            AN.SystemDispatcher.dispatch("Notifier.notify",{
                 title: "Quick Android Example",
                 message: "Hello!"
             });

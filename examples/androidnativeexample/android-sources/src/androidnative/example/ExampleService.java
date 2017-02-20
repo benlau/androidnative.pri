@@ -1,4 +1,4 @@
-package quickandroid.example;
+package androidnative.example;
 import androidnative.SystemDispatcher;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -12,7 +12,7 @@ import org.qtproject.qt5.android.QtNative;
 
 public class ExampleService {
 
-    static void start() {
+    static {
 
         SystemDispatcher.addListener(new SystemDispatcher.Listener() {
 

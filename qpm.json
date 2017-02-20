@@ -1,22 +1,22 @@
 {
-  "name": "com.github.benlau.quickandroid",
-  "description": "Material Design Component and Support Library for Android",
+  "name": "android.native.pri",
+  "description": "Android Integration"
   "author": {
     "name": "Ben Lau",
     "email": "xbenlau@gmail.com"
   },
   "repository": {
     "type": "GITHUB",
-    "url": "https://github.com/benlau/quickandroid.git"
+    "url": "https://github.com/benlau/androidnative.git"
   },
   "version": {
-    "label": "0.1.7",
+    "label": "0.0.1",
     "revision": "1",
     "fingerprint": ""
   },
   "dependencies": [
   ],
   "license": "APACHE_2_0",
-  "pri_filename": "quickandroid.pri",
+  "pri_filename": "androidnative.pri",
   "webpage": ""
 }

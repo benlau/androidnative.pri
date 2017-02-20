@@ -323,7 +323,11 @@ void AndroidNative::SystemDispatcher::registerNatives()
     if (!clazz)
     {
         qCritical() << QString("Can't find %1 class").arg(QString(JCLASS_Name));
-        return ;
+        if (env->ExceptionOccurred()) {
+            env->ExceptionDescribe();
+            env->ExceptionClear();
+        }
+        return;
     }
 
     JNINativeMethod methods[] =
