@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QuickAndroid 0.1
+import AndroidNative 1.0
 
 Item {
 
@@ -28,11 +28,11 @@ Item {
                                   })
     }
 
-    property string m_PICK_IMAGE_MESSAGE: "quickandroid.ImagePicker.pickImage";
+    property string m_PICK_IMAGE_MESSAGE: "androidnative.ImagePicker.pickImage";
 
-    property string m_TAKE_PHOTO_MESSAGE: "quickandroid.ImagePicker.takePhoto";
+    property string m_TAKE_PHOTO_MESSAGE: "androidnative.ImagePicker.takePhoto";
 
-    property string m_CHOSEN_MESSAGE: "quickandroid.ImagePicker.chosen";
+    property string m_CHOSEN_MESSAGE: "androidnative.ImagePicker.chosen";
 
 
     Connections {
@@ -47,7 +47,7 @@ Item {
     }
 
     Component.onCompleted: {
-        SystemDispatcher.loadClass("quickandroid.ImagePicker");
+        SystemDispatcher.loadClass("androidnative.ImagePicker");
     }
 }
 

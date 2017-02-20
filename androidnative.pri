@@ -3,7 +3,7 @@ QML_IMPORT_PATH += $$PWD
 
 INCLUDEPATH += $$PWD/cpp
 RESOURCES += \
-    $$PWD/androidnative.qrc
+    $$PWD/qml/androidnative.qrc
 
 HEADERS += \
     $$PWD/cpp/AndroidNative/priv/systemdispatcherproxy.h \
@@ -17,5 +17,6 @@ SOURCES += \
     $$PWD/cpp/AndroidNative/systemdispatcher.cpp \
     $$PWD/cpp/AndroidNative/environment.cpp \
     $$PWD/cpp/AndroidNative/debug.cpp \
-    $$PWD/cpp/AndroidNative/mediascannerconnection.cpp
+    $$PWD/cpp/AndroidNative/mediascannerconnection.cpp \
+    $$PWD/cpp/AndroidNative/priv/androidnativeqmltypes.cpp
 

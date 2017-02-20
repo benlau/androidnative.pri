@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/qt-project.org/imports">
+        <file>AndroidNative/qmldir</file>
+        <file>AndroidNative/ImagePicker.qml</file>
+    </qresource>
+</RCC>
