@@ -54,7 +54,9 @@ AndroidNative only supports gradle build system, and you must have AndroidManife
 apply from: "androidnative.gradle"
 ```
 
-In case, AndroidNative is not installed via qpm, and ANDROID_PACKAGE_SOURCE_DIR is not set to the default place. You would need to modify  `androidnative.gradle` to get it works.
+[Optional]
+
+In case, AndroidNative is not installed via qpm, and ANDROID_PACKAGE_SOURCE_DIR is not set to the default path. You would need to modify  `androidnative.gradle` to get it works.
 
 Open `androidnative.gradle` and find this line:
 
