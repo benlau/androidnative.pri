@@ -1,0 +1,34 @@
+
+// Obtain androidPackageSourceDir
+// androidPackageSourceDir is the absolute path of the folder containing build.gradle and AndroidManifests.xml
+// This code also works with androiddeployqt.
+
+import groovy.json.JsonSlurper
+
+String getAndroidPackageSourceDir() {
+    String res = System.getProperty("user.dir");
+
+    FileTree tree = fileTree(dir: res + "/..").include("android*deployment-settings.json");
+
+    if (tree.getFiles().size() > 0) {
+        def inputFile =  tree.getFiles().toArray()[0];
+        def InputJSON = new JsonSlurper().parseText(inputFile.text);
+        res = InputJSON["android-package-source-directory"]
+    } else {
+        println("android*deployment-settings.json not found. Set user.dir be the androidPackageSourceDir");
+    }
+
+    return res;
+}
+
+void appendAndroidNativePath(String relativePath) {
+    String androidPackageSourceDir = getAndroidPackageSourceDir();
+    String androidNativePath = androidPackageSourceDir + relativePath;
+    LinkedHashSet hash = android.sourceSets.main.java.srcDirs;
+    hash.add(androidNativePath);
+    android.sourceSets.main.java.srcDirs = hash;
+}
+
+appendAndroidNativePath("/../../../java/src")
+
+println(android.sourceSets.main.java.srcDirs);
