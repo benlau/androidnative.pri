@@ -1,6 +1,44 @@
-Android Native Components for Qt
-=================================
+Android Integration with Qt
+===========================
 
-It is forked from the QuickAndroid project that aim to provide Android native components only.
+It is forked from the QuickAndroid project that aim to provide a library to access Android functions from Qt/QML without using JNI.
 
-It is still under development
+Features
+========
+
+ 1. Messege queue (SystemDispatcher) between C++/Qt and Java/Android code
+  1. Auto conversion between C++ and Java data type. No need to write in JNI.
+  1. It could be used to write your own Java code
+ 1. Image Picker
+ 1. Toast
+ 1. Wrapper of 	android.os.Environment / android.os.Debug / MediaScannerConnection
+
+
+C++ API
+=======
+
+ 1. Environment::getExternalStoragePublicDirectory
+ 1. MediaScannerConnection::scanFile
+ 1. Debug::getNativeHeapSize()
+ 1. Debug::getNativeHeapAllocatedSize()
+
+
+SystemDispatcher
+================
+
+Automatic type convertion
+
+| Qt           | Java    |
+|--------------|---------|
+| int          | int     |
+| bool         | boolean |
+| QString      | String  |
+| QVariantList | List<T> |
+| QVariantMap  | Map<T>  |
+
+
+Installation Instruction
+========================
+
+[androidnative.pri/installation.md at master · benlau/androidnative.pri](https://github.com/benlau/androidnative.pri/blob/master/docs/installation.md)
+
