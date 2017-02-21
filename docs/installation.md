@@ -4,12 +4,16 @@ AndroidNative Installation Guide
 Step 1 - Download source package
 -----------------------------
 
-It is recommended to install via qpm
+It is recommended to install AndroidNative via qpm
 
     qpm install android.native.pri
-
-Step 2 - Setup import path
+   
+Step 2 - Setup import path [Optional]
 ---------------------------
+
+In case, you are using Qt <= 5.6 , you need to add the import path manually
+
+    engine.addImportPath("qrc:/qt-project.org/imports");
 
 Step 3 - JNI_OnLoad
 -------------------
@@ -41,32 +45,24 @@ Example: [TODO]
 Step 4 - Modify build.gradle
 ----------------------------
 
-AndroidNative only supports gradle build system, and you must have AndroidManifest.xml and build.gradle file is generated. If you don't know how to do, please check the document below about "Create templates"
+AndroidNative only supports gradle build system, and you must have AndroidManifest.xml and build.gradle file is generated. If you don't know how to do, please check the document below for "Create templates"
 
 [Deploying Applications to Android Devices | Qt Creator Manual](http://doc.qt.io/qtcreator/creator-deploying-android.html)
 
 
 1) Copy androidnative.gradle from [TODO] to ANDROID_PACKAGE_SOURCE_DIR
 
-2) Add the following line **at the end** of your build.gradle
+2) Add the following lines **at the end** of your build.gradle
 
-```
-apply from: "androidnative.gradle"
-```
+    apply from: "androidnative.gradle"
+    setAndroidNativePath("/../vendor/android/native/pri")
 
-[Optional]
+In case, AndroidNative is not installed via qpm, and ANDROID_PACKAGE_SOURCE_DIR is not set to the default path. Then you need to change the argument for `setAndroidNativePath`. It is the relative path from ANDROID_PACKAGE_SOURCE_DIR to the installation path of AndroidNative (the folder with `androidnative.pri`)
 
-In case, AndroidNative is not installed via qpm, and ANDROID_PACKAGE_SOURCE_DIR is not set to the default path. You would need to modify  `androidnative.gradle` to get it works.
+Step 5 - Modify your Android activity [Optional]
+------------------------------------------------
 
-Open `androidnative.gradle` and find this line:
-
-
-    appendAndroidNativePath("/../vendor/android/native/pri/java")
-
-The input is the relative path from ANDROID_PACKAGE_SOURCE_DIR to the installation path of AndroidNative (plus java/ subfolder). Change it to fit your actual setup.
-
-Step 5 - Modify your Android activity
--------------------------------------
+*If you don't need to use feature like ImagePicker, you may skip this step.*
 
 If you don't have your own custom Android activity, modify AndroidManifest.xml, change activity.name to "androidnative.AndroidnativeActivity"
 
