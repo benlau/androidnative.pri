@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QuickAndroid 0.1
+import AndroidNative 1.0
 
 Item {
     /// The message that will be displayed when show() is called
@@ -8,7 +8,7 @@ Item {
     /// If set to true, the toast duration will be long
     property bool longDuration: false
 
-    readonly property string m_TOAST_MESSAGE: "quickandroid.Toast.showToast"
+    readonly property string m_TOAST_MESSAGE: "androidnative.Toast.showToast"
 
     /// Displays the Toast with the current set text and duration
     function show() {
@@ -19,7 +19,7 @@ Item {
     }
 
     Component.onCompleted: {
-        SystemDispatcher.loadClass("quickandroid.Toast");
+        SystemDispatcher.loadClass("androidnative.Toast");
     }
 }
 

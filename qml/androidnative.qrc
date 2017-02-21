@@ -2,5 +2,6 @@
     <qresource prefix="/qt-project.org/imports">
         <file>AndroidNative/qmldir</file>
         <file>AndroidNative/ImagePicker.qml</file>
+        <file>AndroidNative/Toast.qml</file>
     </qresource>
 </RCC>

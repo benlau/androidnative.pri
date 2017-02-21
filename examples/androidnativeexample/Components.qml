@@ -9,18 +9,17 @@ Page {
 
     property var pages: [
         {
-            name: "Dialog",
-            demo: "dialog/DialogDemo.qml",
-            description: "Dialog Component"
-        },
-        {
             name: "Image Picker",
             demo: "imagePicker/ImagePickerDemo.qml",
-            description: "Pick interface via Java language binding"
+            description: "Pick photo via Java language binding"
+        },{
+            name: "Toast",
+            demo: "toast/ToastDemo.qml",
+            description: "Toast Demonstration"
         },{
             name: "Notification",
             demo: "notification/NotificationDemo.qml",
-            description: "Notification"
+            description: "Demonstrate how to use SystemDispatcher to send notification"
         },{
             name: "Information",
             demo: "info/InfoDemo.qml",
@@ -31,7 +30,7 @@ Page {
     actionBar: ActionBar {
         id : actionBar
         iconSource: A.drawable("ic_menu",Constants.black87)
-        title: "Component List"
+        title: "AndroidNative Component List"
         showIcon: false
         actionButtonEnabled: false
     }

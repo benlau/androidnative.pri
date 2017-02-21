@@ -25,5 +25,6 @@
         <file>res/drawable-xxhdpi/ic_camera.png</file>
         <file>imagePicker/ImagePickerDemo.qml</file>
         <file>info/InfoDemo.qml</file>
+        <file>toast/ToastDemo.qml</file>
     </qresource>
 </RCC>
