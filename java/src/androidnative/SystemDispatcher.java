@@ -134,7 +134,7 @@ public class SystemDispatcher {
         public Map message;
     }
 
-    private static String TAG = "QuickAndroid";
+    private static String TAG = "AndroidNative";
 
     private static final Semaphore mutex = new Semaphore(1);
 

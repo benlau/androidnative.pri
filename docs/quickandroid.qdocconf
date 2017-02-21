@@ -1,13 +1,13 @@
-project = QuickAndroid
+project = AndroidNative
 url = https://github.com/benlau/quickandroid
 description = Qt's Material Design and Support Library for Android
 sourcedirs = ./
-sourcedirs += ../QuickAndroid
+sourcedirs += ../qml/AndroidNative
 sourcedirs += ../
 exampledirs += ../examples/quickandroidexample/
 sources.fileextensions = "*.qml *.qdoc *.cpp"
 headers.fileextensions = "*.h"
-version = 0.1
+version = 1.0
 syntaxhighlighting = true
 sourceencoding = UTF-8
 outputencoding = UTF-8
