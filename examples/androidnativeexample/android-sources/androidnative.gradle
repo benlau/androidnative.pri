@@ -21,7 +21,7 @@ String getAndroidPackageSourceDir() {
     return res;
 }
 
-void setAndroidNativePath(String path) {
+String setAndroidNativePath(String path) {
     String androidPackageSourceDir = getAndroidPackageSourceDir();
     String androidNativePath = androidPackageSourceDir + path + "/java/src";
     LinkedHashSet hash = android.sourceSets.main.java.srcDirs;
@@ -29,4 +29,6 @@ void setAndroidNativePath(String path) {
     android.sourceSets.main.java.srcDirs = hash;
 }
 
-setAndroidNativePath("/../../..");
+ext {
+    setAndroidNativePath = this.&setAndroidNativePath;
+}

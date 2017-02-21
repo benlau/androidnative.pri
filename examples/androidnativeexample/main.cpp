@@ -3,13 +3,11 @@
 #include <QQmlApplicationEngine>
 #include <QQuickView>
 #include <QQmlContext>
-#include "quickandroid.h"
 #include "qadrawableprovider.h"
 #include "AndroidNative/systemdispatcher.h"
 #include "AndroidNative/environment.h"
 #include "AndroidNative/debug.h"
 #include "AndroidNative/mediascannerconnection.h"
-
 #include "debugwrapper.h"
 
 using namespace AndroidNative;

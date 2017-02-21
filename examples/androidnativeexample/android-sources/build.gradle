@@ -57,3 +57,4 @@ android {
 }
 
 apply from: "androidnative.gradle"
+setAndroidNativePath("/../../..");
