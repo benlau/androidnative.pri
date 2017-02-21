@@ -7,10 +7,10 @@
   },
   "repository": {
     "type": "GITHUB",
-    "url": "https://github.com/benlau/androidnative.git"
+    "url": "https://github.com/benlau/androidnative.pri"
   },
   "version": {
-    "label": "0.0.2",
+    "label": "0.0.3",
     "revision": "1",
     "fingerprint": ""
   },
