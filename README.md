@@ -17,10 +17,22 @@ Features
 C++ API
 =======
 
+The functions below do not require to config gradle before using.
+
  1. Environment::getExternalStoragePublicDirectory
  1. MediaScannerConnection::scanFile
  1. Debug::getNativeHeapSize()
  1. Debug::getNativeHeapAllocatedSize()
+
+QML Components
+==============
+
+```
+    import AndroidNative 1.0
+```
+
+ 1. ImagePicker
+ 1. Toast
 
 
 SystemDispatcher
