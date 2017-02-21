@@ -38,9 +38,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void*) {
 #endif
 ```
 
-
-
-Example: [TODO]
+Example: [main.cpp](https://github.com/benlau/androidnative.pri/blob/master/examples/androidnativeexample/main.cpp#L18)
 
 Step 4 - Modify build.gradle
 ----------------------------
@@ -49,7 +47,7 @@ AndroidNative only supports gradle build system, and you must have AndroidManife
 
 [Deploying Applications to Android Devices | Qt Creator Manual](http://doc.qt.io/qtcreator/creator-deploying-android.html)
 
-1) Copy androidnative.gradle from [TODO] to ANDROID_PACKAGE_SOURCE_DIR
+1) Copy [androidnative.gradle](https://github.com/benlau/androidnative.pri/blob/master/examples/androidnativeexample/android-sources/androidnative.gradle) to ANDROID_PACKAGE_SOURCE_DIR
 
 2) Add the following lines **at the end** of your build.gradle
 
@@ -58,6 +56,8 @@ AndroidNative only supports gradle build system, and you must have AndroidManife
 
 The input argument of `setAndroidNativePath` is the relative path from the ANDROID_PACKAGE_SOURCE_DIR to the installation path of AndroidNative (the folder contains `androidnative.pri`). You need to modify it in case your AndroidNative is not installed via qpm or the ANDROID_PACKAGE_SOURCE_DIR is not set to the default path.
 
+Example: [build.gradle](https://github.com/benlau/androidnative.pri/blob/master/examples/androidnativeexample/android-sources/build.gradle#L59)
+
 Step 5 - Modify your Android activity [Optional]
 ------------------------------------------------
 
@@ -65,12 +65,12 @@ Step 5 - Modify your Android activity [Optional]
 
 If you don't have your own custom Android activity, modify AndroidManifest.xml, change activity.name to "androidnative.AndroidnativeActivity"
 
-Example: TODO
+Example: [AndroidManifest.xml](https://github.com/benlau/androidnative.pri/blob/master/examples/androidnativeexample/android-sources/AndroidManifest.xml)
 
 If you have your own custom Android activity, add following lines to your activity class:
 
 ```
-import quickandroid.SystemDispatcher;
+import androidnative.SystemDispatcher;
 ```
 
 ```
@@ -81,6 +81,6 @@ import quickandroid.SystemDispatcher;
     }
 ```
 
-Example: TODO
+Example: [AndroidNativeActivity.java](https://github.com/benlau/androidnative.pri/blob/master/java/src/androidnative/AndroidNativeActivity.java)
 
 
