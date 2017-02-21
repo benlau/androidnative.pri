@@ -12,7 +12,7 @@ static QPointer<SystemDispatcher> m_instance;
 
 QString SystemDispatcher::ACTIVITY_RESUME_MESSAGE = "Activity.onResume";
 QString SystemDispatcher::ACTIVITY_RESULT_MESSAGE = "Activity.onActivityResult";
-
+static bool registerNativesCalled = false;
 
 #ifdef Q_OS_ANDROID
 #include <QAndroidJniObject>
@@ -249,17 +249,43 @@ static void jniEmit(JNIEnv* env,jobject object,jstring name,jobject data) {
                               Q_ARG(QVariantMap,map));
 }
 
+static void printInstruction() {
+    static bool printOnce = false;
 
+    if (printOnce) {
+        return;
+    }
+    printOnce = true;
+
+    // BuildMyString.com generated code. Please enjoy your string responsibly.
+
+    QString msg =  "Using SystemDispatcher in Android but SystemDispatcher::registerNatives() is never called. Please add the following code to main.cpp.\r\n"
+           "==== Code ===\r\n"
+           "#ifdef Q_OS_ANDROID\r\n"
+           "#include <QtAndroidExtras/QAndroidJniObject>\r\n"
+           "#include <QtAndroidExtras/QAndroidJniEnvironment>\r\n"
+           "JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void*) {\r\n"
+           "    Q_UNUSED(vm);\r\n"
+           "    qDebug(\"NativeInterface::JNI_OnLoad()\");\r\n"
+           "    // It must call this function within JNI_OnLoad to enable System Dispatcher\r\n"
+           "    SystemDispatcher::registerNatives();\r\n"
+           "    return JNI_VERSION_1_6;\r\n"
+           "}\r\n"
+           "#endif\r\n"
+           "=== End of Code ===\r\n"
+           "Instruction: \r\n"
+           "https://github.com/benlau/androidnative.pri/blob/master/docs/installation.md\r\n";
+
+   qWarning() << msg;
+}
 #endif
 
 AndroidNative::SystemDispatcher::SystemDispatcher(QObject* parent) : QObject(parent)
 {
-
 }
 
 AndroidNative::SystemDispatcher::~SystemDispatcher()
 {
-
 }
 
 AndroidNative::SystemDispatcher *SystemDispatcher::instance()
@@ -275,7 +301,12 @@ void AndroidNative::SystemDispatcher::dispatch(QString type, QVariantMap message
 {
     Q_UNUSED(type);
     Q_UNUSED(message);
+
 #ifdef Q_OS_ANDROID
+    if (!registerNativesCalled) {
+        printInstruction();
+    }
+
     QAndroidJniEnvironment env;
 
     jstring jType = env->NewStringUTF(type.toLocal8Bit().data());
@@ -317,12 +348,17 @@ void AndroidNative::SystemDispatcher::loadClass(QString javaClassName)
 
 void AndroidNative::SystemDispatcher::registerNatives()
 {
+    Q_UNUSED(registerNativesCalled);
+
 #ifdef Q_OS_ANDROID
+    registerNativesCalled = true;
+
     QAndroidJniEnvironment env;
     jclass clazz = env->FindClass(JCLASS_Name);
     if (!clazz)
     {
-        qCritical() << QString("Can't find %1 class").arg(QString(JCLASS_Name));
+        qCritical() <<  "androidNative.SystemDispatcher Java class is not found. Please configure your build.gradle according to this instruction: \r\n"
+                        "https://github.com/benlau/androidnative.pri/blob/master/docs/installation.md\r\n";
         if (env->ExceptionOccurred()) {
             env->ExceptionDescribe();
             env->ExceptionClear();
