@@ -1,6 +1,6 @@
 {
   "name": "android.native.pri",
-  "description": "Calling Android functions from Qt without JNI"
+  "description": "Calling Android functions from Qt without JNI",
   "author": {
     "name": "Ben Lau",
     "email": "xbenlau@gmail.com"
