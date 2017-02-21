@@ -49,7 +49,6 @@ AndroidNative only supports gradle build system, and you must have AndroidManife
 
 [Deploying Applications to Android Devices | Qt Creator Manual](http://doc.qt.io/qtcreator/creator-deploying-android.html)
 
-
 1) Copy androidnative.gradle from [TODO] to ANDROID_PACKAGE_SOURCE_DIR
 
 2) Add the following lines **at the end** of your build.gradle
@@ -57,7 +56,7 @@ AndroidNative only supports gradle build system, and you must have AndroidManife
     apply from: "androidnative.gradle"
     setAndroidNativePath("/../vendor/android/native/pri")
 
-In case, AndroidNative is not installed via qpm, and ANDROID_PACKAGE_SOURCE_DIR is not set to the default path. Then you need to change the argument for `setAndroidNativePath`. It is the relative path from ANDROID_PACKAGE_SOURCE_DIR to the installation path of AndroidNative (the folder with `androidnative.pri`)
+The input argument of `setAndroidNativePath` is the relative path from the ANDROID_PACKAGE_SOURCE_DIR to the installation path of AndroidNative (the folder contains `androidnative.pri`). You need to modify it in case your AndroidNative is not installed via qpm or the ANDROID_PACKAGE_SOURCE_DIR is not set to the default path.
 
 Step 5 - Modify your Android activity [Optional]
 ------------------------------------------------
