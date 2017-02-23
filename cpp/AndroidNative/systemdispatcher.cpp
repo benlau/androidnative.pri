@@ -259,21 +259,7 @@ static void printInstruction() {
 
     // BuildMyString.com generated code. Please enjoy your string responsibly.
 
-    QString msg =  "Using SystemDispatcher in Android but SystemDispatcher::registerNatives() is never called. Please add the following code to main.cpp.\r\n"
-           "==== Code ===\r\n"
-           "#ifdef Q_OS_ANDROID\r\n"
-           "#include <QtAndroidExtras/QAndroidJniObject>\r\n"
-           "#include <QtAndroidExtras/QAndroidJniEnvironment>\r\n"
-           "JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void*) {\r\n"
-           "    Q_UNUSED(vm);\r\n"
-           "    qDebug(\"NativeInterface::JNI_OnLoad()\");\r\n"
-           "    // It must call this function within JNI_OnLoad to enable System Dispatcher\r\n"
-           "    SystemDispatcher::registerNatives();\r\n"
-           "    return JNI_VERSION_1_6;\r\n"
-           "}\r\n"
-           "#endif\r\n"
-           "=== End of Code ===\r\n"
-           "Instruction: \r\n"
+    QString msg =  "Using SystemDispatcher in Android but SystemDispatcher::registerNatives() is never called. Instruction: \r\n"
            "https://github.com/benlau/androidnative.pri/blob/master/docs/installation.md\r\n";
 
    qWarning() << msg;

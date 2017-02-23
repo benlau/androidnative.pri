@@ -11,7 +11,6 @@ RESOURCES += qml.qrc
 # QML_IMPORT_PATH += ../..
 
 android {
-    QT += androidextras
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 }
 

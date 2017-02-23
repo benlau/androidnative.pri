@@ -1,3 +1,6 @@
+android {
+    QT += androidextras
+}
 
 QML_IMPORT_PATH += $$PWD
 
