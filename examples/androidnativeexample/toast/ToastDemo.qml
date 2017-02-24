@@ -9,7 +9,7 @@ Page {
 
     actionBar: ActionBar {
         id : actionBar
-        title: "Notification"
+        title: "Toast"
         z: 10
         upEnabled: true
         onActionButtonClicked: back();
