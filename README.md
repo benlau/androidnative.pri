@@ -54,3 +54,9 @@ Installation Instruction
 
 [androidnative.pri/installation.md at master · benlau/androidnative.pri](https://github.com/benlau/androidnative.pri/blob/master/docs/installation.md)
 
+Example
+=======
+
+An example program is available at: [androidnative.pri/examples/androidnativeexample at master · benlau/androidnative.pri](https://github.com/benlau/androidnative.pri/tree/master/examples/androidnativeexample)
+
+![example1.png (533×472)](https://raw.githubusercontent.com/benlau/androidnative.pri/master/docs/screenshots/example1.png)
