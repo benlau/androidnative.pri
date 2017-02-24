@@ -1,19 +1,10 @@
-Quick Android Example Program
-=============================
-
-Pre-built Binary
-----------------
-
-[Download](https://drone.io/github.com/benlau/quickandroid/files)
-
-Remarks: Daily build for non-master branch may not be working.
-
-
+AndroidNative Example Program
+=====================
 
 Prerequisites
 -------------
 
- * Qt Android SDK >= 5.3.0
+ * Qt Android SDK >= 5.6
  * Android SDK
 
 Check this article for how to setup Qt and Android SDK:
@@ -23,21 +14,11 @@ Check this article for how to setup Qt and Android SDK:
 Build Instruction
 -----------------
 
- 1. Open quickandroidexample.pro by Qt Creator
+ 1. Open androidnativeexample.pro by Qt Creator
  1. Press the "Projects" tab. Make sure the "Android for xxx" kit has been selected
  1. Plug a Android device to your computer
  1. Press "Build" -> "Run"
  1. The program will be deployed to your device. It is so easy!
 
-![Screenshot](https://raw.githubusercontent.com/benlau/quickandroid/master/tests/quickandroidexample/docs/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/benlau/androidnative.pri/master/docs/screenshots/example1.png)
 
-FAQ
----
-
-1) How to prevent to show a scene with only application title on startup?
-
-Add the following attribute to AndroidManifest.xml within activity tag
-
-```
-android:theme="@android:style/Theme.Black.NoTitleBar"
-```
