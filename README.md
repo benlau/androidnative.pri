@@ -38,7 +38,84 @@ QML Components
 SystemDispatcher
 ================
 
-Automatic type convertion
+SystemDispatcher is a message queue component for delivering action message between C++/QML and Java. Data type in message is converted to the target platform automatically (e.g QMap <-> java.util.Map) . So that user doesn't need to write JNI to access their Java functions.
+
+Moreover, SystemDispatcher is compilable on a non-Android platform. It doesn't cause any trouble to run the code on development host.
+
+```
+// C++ Example
+
+#include <AndroidNative>
+
+// Load a Java class. It will trigger the code within `static` block
+SystemDispatcher::instance()->loadClass("androidnative.example.ExampleService");
+
+QVariantMap message;
+message["value1"] = 1;
+message["value2"] = 2.0;
+message["value3"] = "3";
+
+// Dispatch a message
+SystemDispatcher::instance()->dispatch("androidnative.example.dummyAction", message);
+
+```
+
+```
+// QML Example
+
+import AndroidNative 1.0
+
+Item {
+
+  Component.onCompleted: {
+    var message = {
+      value1: 1,
+      value2: 2.0,
+      value3: "3"
+    }
+    SystemDispatcher.dispatcher("androidnative.example.dummyAction", message);
+  }
+}
+```
+
+```
+// Java Receiver
+
+public class ExampleService {
+
+    static {
+
+        SystemDispatcher.addListener(new SystemDispatcher.Listener() {
+
+            public void onDispatched(String type , Map message) {
+
+                if (type.equals("androidnative.example.dummyAction")) {
+                    // Process then dispatch a response back to C++/QML                    
+                    SystemDispatcher.dispatch(("androidnative.example.response");
+                
+                    return;
+                }
+                return;
+            }        
+        });        
+     }
+}
+
+```
+
+```
+// Listen from QML
+
+Connections {
+  target: SystemDispatcher
+  onDispatched: {
+    // process the message
+  }
+}
+```
+
+
+Supported data type:
 
 | Qt           | Java    |
 |--------------|---------|
@@ -47,7 +124,6 @@ Automatic type convertion
 | QString      | String  |
 | QVariantList | List<T> |
 | QVariantMap  | Map<T>  |
-
 
 Installation Instruction
 ========================
