@@ -1,4 +1,4 @@
-Calling Android functions from Qt without using JNI Edit
+Calling Android functions from Qt without using JNI 
 ===========================
 
 It is forked from the QuickAndroid project that aim to provide a library to access Android functions from Qt/QML without using JNI.
@@ -18,12 +18,12 @@ Features
 C++ API
 =======
 
-The functions below do not require to config gradle before using.
-
- 1. Environment::getExternalStoragePublicDirectory
- 1. MediaScannerConnection::scanFile
+ 1. Environment::getExternalStoragePublicDirectory()
+ 1. MediaScannerConnection::scanFile()
  1. Debug::getNativeHeapSize()
  1. Debug::getNativeHeapAllocatedSize()
+
+The functions above do not require to config gradle before using.
 
 QML Components
 ==============
