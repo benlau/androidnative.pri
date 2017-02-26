@@ -1,4 +1,4 @@
-Android Integration with Qt
+Calling Android functions from Qt without using JNI Edit
 ===========================
 
 It is forked from the QuickAndroid project that aim to provide a library to access Android functions from Qt/QML without using JNI.
@@ -6,13 +6,14 @@ It is forked from the QuickAndroid project that aim to provide a library to acce
 Features
 ========
 
- 1. Messege queue (SystemDispatcher) between C++/Qt and Java/Android code
-  1. Auto conversion between C++ and Java data type. No need to write in JNI.
+ 1. SystemDispatcher - A message queue for C++/Qt and Java/Android
+  1. Send message in C++ and receive in Java and vice versa.
+  1. Data type will be converted automatically. No need to write in JNI.
   1. It could be used to write your own Java code
- 1. Image Picker
- 1. Toast
+ 1. Bundled Components
+  1. Image Picker
+  1. Toast
  1. Wrapper of 	android.os.Environment / android.os.Debug / MediaScannerConnection
-
 
 C++ API
 =======
