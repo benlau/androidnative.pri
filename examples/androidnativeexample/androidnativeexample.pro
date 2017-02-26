@@ -29,7 +29,8 @@ DISTFILES += \
     android-sources/build.gradle \
     android-sources/gradle/wrapper/gradle-wrapper.properties \
     android-sources/gradlew.bat \
-    android-sources/settings.gradle
+    android-sources/settings.gradle \
+    android-sources/src/androidnative/example/ExampleService.java
 
 HEADERS += \
     ../../README.md \
