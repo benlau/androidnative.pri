@@ -3,12 +3,14 @@ Calling Android functions from Qt without using JNI
 
 It is forked from the QuickAndroid project that aim to provide a library to access Android functions from Qt/QML without using JNI.
 
+Remarks: This project only support gradle build system.
+
 Features
 ========
 
  1. SystemDispatcher - A message queue for C++/Qt and Java/Android
-  1. Send message in C++ and receive in Java and vice versa.
-  1. Data type will be converted automatically. No need to write in JNI.
+  1. Send message in C++, receive in Java and vice versa.
+  1. Data type will be converted automatically (e.g QMap <-> java.util.Map). No need to write in JNI.
   1. It could be used to write your own Java code
  1. Bundled Components
   1. Image Picker
@@ -41,7 +43,7 @@ SystemDispatcher
 
 SystemDispatcher is a message queue component for delivering action message between C++/QML and Java. Data type in message is converted to the target platform automatically (e.g QMap <-> java.util.Map) . So that user doesn't need to write JNI to access their Java functions.
 
-Moreover, SystemDispatcher is compilable on a non-Android platform. It doesn't cause any trouble to run the code on development host.
+Moreover, SystemDispatcher is compilable on a non-Android platform. It doesn't cause any trouble to run on your development host.
 
 ```
 // C++ Example
@@ -74,7 +76,7 @@ Item {
       value2: 2.0,
       value3: "3"
     }
-    SystemDispatcher.dispatcher("androidnative.example.dummyAction", message);
+    SystemDispatcher.dispatch("androidnative.example.dummyAction", message);
   }
 }
 ```
