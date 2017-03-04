@@ -22,7 +22,7 @@ before_install:
     - gradle --version
     - git clone https://github.com/benlau/qtci/
     - source qtci/path.env
-    - qt-5.5.1-android-travis
+    - ./ci/qt-android
 
 script:
     - export ROOT_DIR=`pwd`
@@ -32,7 +32,7 @@ script:
     - mkdir -p $BUILD_DIR
     - ls 
     - keytool -genkey -v -alias alias_name -keyalg RSA -keysize 2048 -validity 10000 -dname "cn=localhost, ou=oss, o=Continuent, c=HK"  -storepass $KEYPASS -keypass $KEYPASS -keystore $KEYSTORE
-    - source qt-5.5.1-android-travis.env
+    - source qt.env
     - ls $ANDROID_SDK_ROOT/build-tools
     - cd $BUILD_DIR
     - build-android-gradle-project ${ROOT_DIR}/tests/instrument/activity/activity.pro
