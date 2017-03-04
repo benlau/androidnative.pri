@@ -24,7 +24,12 @@ Page {
             name: "Information",
             demo: "info/InfoDemo.qml",
             description: "Android System Information"
+        },{
+            name: "Translucent Status Bar",
+            demo: "translucent/TranslucentDemo.qml",
+            description: "Enable/disable Translucent Status Bar"
         }
+
     ];
 
     actionBar: ActionBar {

@@ -26,5 +26,6 @@
         <file>imagePicker/ImagePickerDemo.qml</file>
         <file>info/InfoDemo.qml</file>
         <file>toast/ToastDemo.qml</file>
+        <file>translucent/TranslucentDemo.qml</file>
     </qresource>
 </RCC>
