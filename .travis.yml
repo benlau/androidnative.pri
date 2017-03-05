@@ -29,6 +29,7 @@ script:
     - KEYSTORE=dev.keystore
     - KEYPASS=123456
     - BUILD_DIR=$ROOT_DIR/tests/instrument/build
+    - ANDROID_TARGET_SDK_VERSION=23
     - mkdir -p $BUILD_DIR
     - ls 
     - keytool -genkey -v -alias alias_name -keyalg RSA -keysize 2048 -validity 10000 -dname "cn=localhost, ou=oss, o=Continuent, c=HK"  -storepass $KEYPASS -keypass $KEYPASS -keystore $KEYSTORE
