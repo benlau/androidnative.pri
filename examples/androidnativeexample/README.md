@@ -14,6 +14,7 @@ Check this article for how to setup Qt and Android SDK:
 Build Instruction
 -----------------
 
+ 1. Run `qpm install` to get required packages
  1. Open androidnativeexample.pro by Qt Creator
  1. Press the "Projects" tab. Make sure the "Android for xxx" kit has been selected
  1. Plug a Android device to your computer
