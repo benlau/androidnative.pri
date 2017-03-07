@@ -2,12 +2,13 @@
 <manifest package="androidnative.example" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0" android:versionCode="1" android:installLocation="auto">
     <application android:hardwareAccelerated="true"
         android:name="org.qtproject.qt5.android.bindings.QtApplication"
-        android:label="Quick Android Example" android:icon="@drawable/icon">
+        android:theme="@style/AppTheme"
+        android:label="Android Native Example" android:icon="@drawable/icon">
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation"
-                  android:name="androidnative.AndroidNativeActivity"
+                  android:name="androidnative.example.ExampleActivity"
                   android:label="Android Native Example"
-                  android:theme="@style/AppTheme"
                   android:screenOrientation="portrait"
+                  android:theme="@style/AppTheme"
                   android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -39,7 +40,7 @@
             <!-- Splash screen -->
         </activity>
     </application>
-    <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="18"/>
+    <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="21"/>
     <supports-screens android:largeScreens="true" android:normalScreens="true" android:anyDensity="true" android:smallScreens="true"/>
 
     <!-- The following comment will be replaced upon deployment with default permissions based on the dependencies of the application.
