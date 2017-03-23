@@ -1,7 +1,7 @@
 Calling Android functions from Qt without using JNI 
 ===========================
 
-It is forked from the QuickAndroid project that aim to provide a library to access Android functions from Qt/QML without using JNI.
+It is a fork of the [Quick Android](https://github.com/benlau/quickandroid) project that aims to provide a library to access Android functions from Qt/QML without using JNI.
 
 Remarks: This project only support gradle build system.
 
