@@ -176,7 +176,7 @@ static jobject convertToJObject(QVariant v) {
 
         env->DeleteLocalRef(arrayListClass);
     } else {
-        qWarning() << "QASystemDispatcher: Non-supported data type - " <<  v.type();
+        qWarning() << "ANSystemDispatcher: Non-supported data type - " <<  v.type();
     }
     return res;
 }

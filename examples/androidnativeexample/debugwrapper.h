@@ -15,7 +15,6 @@ public slots:
     long getNativeHeapSize() const;
 
     long getNativeHeapAllocatedSize() const;
-
 };
 
 #endif // DEBUGWRAPPER_H

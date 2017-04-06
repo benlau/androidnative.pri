@@ -3,6 +3,7 @@
 #include <QQmlApplicationEngine>
 #include <QQuickView>
 #include <QQmlContext>
+#include <QSettings>
 #include "qadrawableprovider.h"
 #include "AndroidNative/systemdispatcher.h"
 #include "AndroidNative/environment.h"
@@ -33,9 +34,19 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+    app.setApplicationName("Android Native Example");
+    app.setOrganizationDomain("com.github.benlau.androidnative");
+
+    QSettings settings;
+
+    settings.setValue("firstTimeLoading", false);
+    settings.sync();
 
     QVariantMap env;
     env["DIRECTORY_DCIM"] = Environment::getExternalStoragePublicDirectory(Environment::DIRECTORY_DCIM);
+
+    QVariantMap misc;
+    misc["idealThreadCount"] = QThread::idealThreadCount();
 
     MediaScannerConnection::scanFile("");
 
@@ -46,6 +57,7 @@ int main(int argc, char *argv[])
     /* QuickAndroid Initialization */
     engine.addImportPath("qrc:///"); // Add QuickAndroid into the import path
     engine.rootContext()->setContextProperty("Environment", env);
+    engine.rootContext()->setContextProperty("Misc", misc);
     engine.rootContext()->setContextProperty("Debug", new DebugWrapper(&engine));
 
     /* End of QuickAndroid Initialization */

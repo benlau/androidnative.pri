@@ -38,6 +38,13 @@ Page {
             interactive: false
             width: page.width
         }
+
+        ListItem {
+            title: "QThread.idealThreadCount"
+            subtitle: Misc.idealThreadCount;
+            interactive: false
+            width: page.width
+        }
     }
 
 
