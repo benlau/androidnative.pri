@@ -51,8 +51,10 @@ AndroidNative only supports gradle build system, and you must have AndroidManife
 
 2) Add the following lines **at the end** of your build.gradle
 
+```
     apply from: "androidnative.gradle"
     setAndroidNativePath("/../vendor/android/native/pri")
+```
 
 The input argument of `setAndroidNativePath` is the relative path from the ANDROID_PACKAGE_SOURCE_DIR to the installation path of AndroidNative (the folder contains `androidnative.pri`). You need to modify it in case your AndroidNative is not installed via qpm or the ANDROID_PACKAGE_SOURCE_DIR is not set to the default path.
 
