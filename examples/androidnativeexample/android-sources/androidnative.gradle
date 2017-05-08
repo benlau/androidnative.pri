@@ -15,7 +15,7 @@ String getAndroidPackageSourceDir() {
         def InputJSON = new JsonSlurper().parseText(inputFile.text);
         res = InputJSON["android-package-source-directory"]
     } else {
-        println("android*deployment-settings.json not found. Set user.dir be the androidPackageSourceDir");
+        println("android*deployment-settings.json not found. Set androidPackageSourceDir to user.dir");
     }
 
     return res;
