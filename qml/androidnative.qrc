@@ -3,5 +3,6 @@
         <file>AndroidNative/qmldir</file>
         <file>AndroidNative/ImagePicker.qml</file>
         <file>AndroidNative/Toast.qml</file>
+        <file>AndroidNative/VideoPicker.qml</file>
     </qresource>
 </RCC>
