@@ -116,7 +116,7 @@ public class Util {
                 String filter = " 1=1 " ;
 
                 if ( message.containsKey("age") ) {
-                    int   age = (int) message.get("age");   // age in seconds
+                    int   age = (Integer) message.get("age");   // age in seconds
                     cutOffTimeStamp = System.currentTimeMillis() - age * 1000 ;
                     filter = filter + " and date >= " + cutOffTimeStamp ;
                     }
@@ -127,19 +127,19 @@ public class Util {
                  }
 
                 if ( message.containsKey("afterId") ) {
-                    int   afterId = (int) message.get("afterId");
+                    int   afterId = (Integer) message.get("afterId");
                     filter = filter + " and _id > " + afterId ;
                  }
 
                 if ( message.containsKey("read") ) {
-                    int read_status = (int) message.get("read");
+                    int read_status = (Integer) message.get("read");
                     filter = filter + " and read = " + read_status ;
                     }
 
                 String sortOrder  = " date desc " ;
 
                 if ( message.containsKey("count") ) {
-                    int count = (int) message.get("count");
+                    int count = (Integer) message.get("count");
                     sortOrder = sortOrder + " limit " +  count ;
                     }
 
