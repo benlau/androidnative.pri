@@ -45,7 +45,7 @@ public class Util {
     }
 
     static void setTranslucentStatusBar(Map message) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT < 21 ) {  //TODO: use Build.VERSION_CODES.LOLLIPOP  in place of 21
             return;
         }
 
