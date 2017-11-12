@@ -40,6 +40,7 @@ script:
     - sed -i "s/com.android.application/com.android.library/g" android-build/build.gradle
     - cat android-build/gradle.properties 
     - cp ./android-build/build/outputs/apk/android-build-debug.apk output.apk
+    - android list target 
     - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
     - emulator -avd test -no-audio -no-window &
     - android-wait-for-emulator
