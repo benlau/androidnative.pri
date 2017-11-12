@@ -40,7 +40,8 @@ script:
     - sed -i "s/com.android.application/com.android.library/g" android-build/build.gradle
     - cat android-build/gradle.properties 
     - cp ./android-build/build/outputs/apk/android-build-debug.apk output.apk
-    - echo y | android update sdk --no-ui --all --filter "build-tools-21.1.2,sys-img-armeabi-v7a-android-19,sys-img-armeabi-v7a-google_apis-19"
+    - echo y | android update sdk --no-ui --all --filter "sys-img-armeabi-v7a-android-19,sys-img-armeabi-v7a-google_apis-19"
+    - echo y | android update sdk --no-ui --all --filter "build-tools-21.1.2"
     - android list target 
     - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
     - emulator -avd test -no-audio -no-window &
