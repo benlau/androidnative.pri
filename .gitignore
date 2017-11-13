@@ -41,5 +41,5 @@ gradle.properties
 *.iml
 vendor
 tests/instrument/build
-build
+build/
 *.swp

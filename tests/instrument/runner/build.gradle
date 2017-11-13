@@ -34,6 +34,21 @@ android {
         targetSdkVersion 19
     }
 
+    signingConfigs {
+        release {
+            storeFile file(System.getenv("KEYSTORE"))
+            keyAlias System.getenv("KEYALIAS")
+            keyPassword  System.getenv("KEYPASS")
+            storePassword System.getenv("KEYPASS")
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'

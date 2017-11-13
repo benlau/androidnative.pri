@@ -8,39 +8,61 @@ addons:
 android:
   components:
     - build-tools-23.0.2
+    - build-tools-21.1.2
+    - android-21
     - android-19
     - extra-google-google_play_services
+    - sys-img-armeabi-v7a-android-19
 env:
-  - DISPLAY=:99.0
+  global:
+    - DISPLAY=:99.0
+    - KEYSTORE=$PWD/dev.keystore
+    - KEYPASS=123456
+    - KEYALIAS=alias
+    - ROOT_DIR=`pwd`
+    - BUILD_DIR=$ROOT_DIR/tests/instrument/build
+    - export ANDROID_TARGET_SDK_VERSION=21
+    - export ANDROID_SDK_ROOT=/usr/local/android-sdk
+    - export ANDROID_NDK_ROOT=${TRAVIS_BUILD_DIR}/android-ndk-r10c
+    - export PATH=$PWD/android-sdk-linux/tools:$PATH
+    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
+
 compiler:
   - gcc
 before_install:
-    - wget -c https://services.gradle.org/distributions/gradle-2.9-bin.zip
-    - unzip -qq gradle-2.9-bin.zip
-    - export GRADLE_HOME=$PWD/gradle-2.9
-    - export PATH=$GRADLE_HOME/bin:$PATH
+   # - wget -c https://services.gradle.org/distributions/gradle-2.9-bin.zip
+   # - unzip -qq gradle-2.9-bin.zip
+   # - export GRADLE_HOME=$PWD/gradle-2.9
+   # - export PATH=$GRADLE_HOME/bin:$PATH
     - gradle --version
     - git clone https://github.com/benlau/qtci/
     - source qtci/path.env
+    - ls ${TRAVIS_BUILD_DIR}
+    - ls /usr/local/android-sdk
     - ./ci/qt-android
+    - wget -c -nv http://dl.google.com/android/ndk/android-ndk-r10c-linux-x86_64.bin
+    - (7zr x android-ndk-r10c-linux-x86_64.bin | grep -v ^Extract)
+    - ls ${ANDROID_NDK_ROOT}
+    - android list target
 
 script:
-    - export ROOT_DIR=`pwd`
-    - KEYSTORE=dev.keystore
-    - KEYPASS=123456
-    - BUILD_DIR=$ROOT_DIR/tests/instrument/build
-    - ANDROID_TARGET_SDK_VERSION=23
+    - ls ${TRAVIS_BUILD_DIR}
+    - android list target
     - mkdir -p $BUILD_DIR
-    - ls 
-    - keytool -genkey -v -alias alias_name -keyalg RSA -keysize 2048 -validity 10000 -dname "cn=localhost, ou=oss, o=Continuent, c=HK"  -storepass $KEYPASS -keypass $KEYPASS -keystore $KEYSTORE
+    - keytool -genkey -v -alias $KEYALIAS -keyalg RSA -keysize 2048 -validity 10000 -dname "cn=localhost, ou=oss, o=Continuent, c=HK"  -storepass $KEYPASS -keypass $KEYPASS -keystore $KEYSTORE
     - source qt.env
+#    - export PATH=${TRAVIS_BUILD_DIR}/ci:$PATH
     - ls $ANDROID_SDK_ROOT/build-tools
     - cd $BUILD_DIR
+    - which build-android-gradle-project 
     - build-android-gradle-project ${ROOT_DIR}/tests/instrument/activity/activity.pro
+    - find android-build/build/outputs
     - sed -i "s/com.android.application/com.android.library/g" android-build/build.gradle
     - cat android-build/gradle.properties 
-    - cp ./android-build/build/outputs/apk/android-build-debug.apk output.apk
-    - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a
+#    - cp ./android-build/build/outputs/apk/android-build-debug.apk output.apk
+    - cp android-build/build/outputs/apk/android-build-release-signed.apk output.apk
+    - echo no | android create avd --force -n test -t android-19 --abi armeabi-v7a 
     - emulator -avd test -no-audio -no-window &
     - android-wait-for-emulator
     - adb shell input keyevent 82 &
@@ -48,9 +70,9 @@ script:
     - adb install -r output.apk
     - cd $ROOT_DIR/tests/instrument/runner
     - ls
-    - ./gradlew -q assembleDebug
+    - ./gradlew -q assembleRelease
     - find . -name "*.apk"
-    - adb install -r ./build/outputs/apk/runner-debug.apk
+    - adb install -r ./build/outputs/apk/runner-release.apk
     - adb shell am instrument -w quickandroid.example.tests/android.test.InstrumentationTestRunner 2>&1 | tee instrument.log
     - adb logcat -d > log.txt
     - sed -i "/dalvikvm/d" log.txt
