@@ -179,14 +179,6 @@ static jobject convertToJObject(QVariant v) {
 
         env->DeleteLocalRef(doubleClass);
 
-    } else if (v.canConvert<float>()) {
-        jclass floatClass = env->FindClass("java/lang/Float");
-        jmethodID floatConstructor = env->GetMethodID( floatClass, "<init>", "(F)V");
-
-        res = env->NewObject(floatClass,floatConstructor,v.toFloat());
-
-        env->DeleteLocalRef(floatClass);
-
     } else if (v.type() == QVariant::Bool) {
         jclass booleanClass = env->FindClass("java/lang/Boolean");
         jmethodID booleanConstructor = env->GetMethodID(booleanClass,"<init>","(Z)V");
