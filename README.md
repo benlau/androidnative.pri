@@ -17,6 +17,7 @@ Features
   1. Toast
   1. Video Picker
   1. SMS Inbox reader (via Util component)
+  1. make a phone call, makeCall (via Util component)
  1. Wrapper of 	android.os.Environment / android.os.Debug / MediaScannerConnection
 
 C++ API
