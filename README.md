@@ -15,6 +15,8 @@ Features
  1. Bundled Components
   1. Image Picker
   1. Toast
+  1. Video Picker
+  1. SMS Inbox reader (via Util component)
  1. Wrapper of 	android.os.Environment / android.os.Debug / MediaScannerConnection
 
 C++ API
@@ -35,7 +37,9 @@ QML Components
 ```
 
  1. ImagePicker
+ 1. VideoPicker
  1. Toast
+ 1. Util
 
 
 SystemDispatcher

@@ -35,6 +35,9 @@ static QVariant convertToQVariant(QAndroidJniObject value) {
 
     jclass jclass_of_string = env->FindClass("java/lang/String");
     jclass jclass_of_integer = env->FindClass("java/lang/Integer");
+    jclass jclass_of_long = env->FindClass("java/lang/Long");
+    jclass jclass_of_float = env->FindClass("java/lang/Float");
+    jclass jclass_of_double = env->FindClass("java/lang/Double");
     jclass jclass_of_boolean = env->FindClass("java/lang/Boolean");
     jclass jclass_of_list = env->FindClass("java/util/List");
     jclass jclass_of_map = env->FindClass("java/util/Map");
@@ -45,6 +48,12 @@ static QVariant convertToQVariant(QAndroidJniObject value) {
         v = value.callMethod<jint>("intValue","()I");
     } else if (env->IsInstanceOf(value.object<jobject>(),jclass_of_string)) {
         v = value.toString();
+    } else if (env->IsInstanceOf(value.object<jobject>(),jclass_of_long)) {
+        v = value.callMethod<jlong>("longValue","()J");
+    } else if (env->IsInstanceOf(value.object<jobject>(),jclass_of_float)) {
+        v = value.callMethod<jfloat>("floatValue","()F");
+    } else if (env->IsInstanceOf(value.object<jobject>(),jclass_of_double)) {
+        v = value.callMethod<jdouble>("doubleValue","()D");
     } else if (env->IsInstanceOf(value.object<jobject>(), jclass_of_map)) {
         v = createVariantMap(value.object<jobject>());
     } else if (env->IsInstanceOf(value.object<jobject>(),jclass_of_list)) {
@@ -55,10 +64,15 @@ static QVariant convertToQVariant(QAndroidJniObject value) {
             list.append(convertToQVariant(item));
         }
         v = list;
+    } else {
+         qWarning() << "value is not an instance of any of the handled jclass types\n";
     }
 
     env->DeleteLocalRef(jclass_of_string);
     env->DeleteLocalRef(jclass_of_integer);
+    env->DeleteLocalRef(jclass_of_long);
+    env->DeleteLocalRef(jclass_of_float);
+    env->DeleteLocalRef(jclass_of_double);
     env->DeleteLocalRef(jclass_of_boolean);
     env->DeleteLocalRef(jclass_of_list);
     env->DeleteLocalRef(jclass_of_map);
@@ -149,6 +163,22 @@ static jobject convertToJObject(QVariant v) {
         res = env->NewObject(integerClass,integerConstructor,v.toInt());
 
         env->DeleteLocalRef(integerClass);
+    } else if (v.type() == QVariant::LongLong) {
+        jclass longClass = env->FindClass("java/lang/Long");
+        jmethodID longConstructor = env->GetMethodID( longClass, "<init>", "(J)V");
+
+        res = env->NewObject(longClass,longConstructor, v.toLongLong()  );
+
+        env->DeleteLocalRef(longClass);
+
+    } else if (v.type() == QVariant::Double) {
+        jclass doubleClass = env->FindClass("java/lang/Double");
+        jmethodID doubleConstructor = env->GetMethodID( doubleClass, "<init>", "(D)V");
+
+        res = env->NewObject(doubleClass,doubleConstructor,v.toDouble());
+
+        env->DeleteLocalRef(doubleClass);
+
     } else if (v.type() == QVariant::Bool) {
         jclass booleanClass = env->FindClass("java/lang/Boolean");
         jmethodID booleanConstructor = env->GetMethodID(booleanClass,"<init>","(Z)V");
