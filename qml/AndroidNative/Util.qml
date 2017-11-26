@@ -8,9 +8,16 @@ Item {
     property int smsMessagesCount: 0
 
     signal smsFetched();
+    signal callFinished();
 
     property string m_GETSMS_MESSAGE: "androidnative.Util.getSMSMessages";
     property string m_GOTSMS_MESSAGE: "androidnative.Util.gotSMSMessages";
+
+    property string m_MAKE_CALL_MESSAGE: "androidnative.Util.makeCall";
+
+    property bool callInitiated  : false;
+    property bool callInProgress : false;
+
 
     function getSMSMessages(params) {
 
@@ -31,6 +38,23 @@ Item {
         SystemDispatcher.dispatch( m_GETSMS_MESSAGE , args );
     }
 
+    function makeCall(params) {
+        var args = {};
+        if (params === undefined ) {
+            params={};
+        }
+        if (params.number) {
+            args.number = params.number;
+        }
+
+        // intent can be 'call' or 'dial' , default: dial
+        args.intent = params.intent ? params.intent  : 'dial';
+
+
+        callInitiated = true;
+        SystemDispatcher.dispatch( m_MAKE_CALL_MESSAGE , args );
+    }
+
     Connections {
         target: SystemDispatcher
         onDispatched: {
@@ -41,6 +65,35 @@ Item {
             }
         }
     }
+
+    Connections {
+        target: Qt.application
+
+        onStateChanged: {
+
+            // When the new activity of calling is launched the Qt application eventually
+            // gets suspended , just before suspension of the app the state changes to
+            // Qt.ApplicationSuspended, this is our chance to register that callisin progress
+            // note progress does not means call has really connected, as a matter of
+            // fact for security reasons android does not returns the result of calling
+            // intents.
+
+            if ( callInitiated  &&  Qt.application.state ==Qt.ApplicationSuspended  ) {
+                callInProgress = true;
+            }
+
+            // When the Qt applications regains active status , ie comes in foreground
+            // then we check if call was in progress , in such a case emit the signal
+            if (callInProgress  && Qt.application.state == Qt.ApplicationActive ) {
+                // flip back the bools.
+                 callInProgress = false;
+                 callInitiated  = false;
+                // emit signal.
+                 callFinished();
+            }
+        }
+    }
+
 
     Component.onCompleted: {
         // load the Java class Util in package androidnative

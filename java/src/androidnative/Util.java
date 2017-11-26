@@ -2,6 +2,7 @@ package androidnative;
 
 import android.app.Activity;
 import android.os.Build;
+import android.content.Intent;
 import android.util.Log;
 import android.net.Uri;
 import android.view.View;
@@ -28,6 +29,7 @@ public class Util {
     public static final String SET_FULL_SCREEN = "androidnative.Util.setFullScreen";
     public static final String GET_SMS_MESSAGE = "androidnative.Util.getSMSMessages";
     public static final String GOT_SMS_MESSAGE = "androidnative.Util.gotSMSMessages";
+    public static final String MAKE_CALL_MESSAGE = "androidnative.Util.makeCall";
 
 
     static {
@@ -39,6 +41,8 @@ public class Util {
                     setFullScreen(message);
                 } else if (type.equals(GET_SMS_MESSAGE)) {
                     getSMSMessages(message);
+                } else if (type.equals(MAKE_CALL_MESSAGE)) {
+                    makeCall(message);
                 }
             }
         });
@@ -198,5 +202,28 @@ public class Util {
             reply.put("messages", smslist );
             reply.put("messagesCount", smslist.size() );
             SystemDispatcher.dispatch(GOT_SMS_MESSAGE,reply);
+    }
+
+    static void makeCall(Map message) {
+
+        Intent intent ;
+        String intentType , number ;
+
+        intentType = (String) message.get("intent");
+
+         if (intentType.equals("call") ) {
+            intent = new Intent(Intent.ACTION_CALL);
+         } else {
+            intent = new Intent(Intent.ACTION_DIAL);
+         }
+
+
+        if ( message.containsKey("number") ) {
+            number = (String) message.get("number") ;
+            intent.setData(Uri.parse("tel:" + number ));
+            Log.d(TAG , "called makeCall with number:" + number );
+            Activity activity = org.qtproject.qt5.android.QtNative.activity();
+            activity.startActivity(intent);
+        }
     }
 }
