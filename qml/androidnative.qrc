@@ -5,5 +5,6 @@
         <file>AndroidNative/Toast.qml</file>
         <file>AndroidNative/VideoPicker.qml</file>
         <file>AndroidNative/Util.qml</file>
+        <file>AndroidNative/Share.qml</file>
     </qresource>
 </RCC>

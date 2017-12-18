@@ -18,6 +18,7 @@ Features
   1. Video Picker
   1. SMS Inbox reader (via Util component)
   1. make a phone call, makeCall (via Util component)
+  1. sharing content using ACTION_SEND (via Share component)
  1. Wrapper of 	android.os.Environment / android.os.Debug / MediaScannerConnection
 
 C++ API
@@ -41,6 +42,7 @@ QML Components
  1. VideoPicker
  1. Toast
  1. Util
+ 1. Share
 
 
 SystemDispatcher
@@ -132,6 +134,58 @@ Supported data type:
 | QString      | String  |
 | QVariantList | List<T> |
 | QVariantMap  | Map<T>  |
+
+
+Sharing Example
+=================
+```
+import AndroidNative 1.0 as AN
+
+
+
+AN.Share {
+        id: an
+        
+}
+
+Button {
+    text: "Share"
+
+    onClicked: {
+    
+    // Please refer to:
+    // https://developer.android.com/reference/android/content/Intent.html#ACTION_SEND
+    // for details and usage of parameters.
+    // if any of urls , uris or texts is specifed ACTION_SEND_MULTIPLE is invoked.
+    
+    // note if remote url is specified via 'url' , the file/url is fecthed from the network.
+    // and the content is shared.
+    
+             an.shareContent(  {
+                 //  mime_type: 'image/*'
+                 // , uri: single_uri
+                 // , text:  "This is a sample TEXT for sharing"
+                 // , html_text:  "This is a sample <b>HTML</b> for sharing"
+                 // , subject:  "This is a sample SUBJECT for sharing"
+                 // , package: "com.whatsapp"
+                 // , url: "https://c1.staticflickr.com/9/8121/8686001144_4ae5268a38_b.jpg"
+                 // , uris: imageuris
+                 // , texts:  [ "This is a sample TEXT for sharing" , "Text 2" ]
+                 //, html_texts:  [ "This is a sample <b>HTML</b> for sharing" , "<b>HTML2</b>" ]
+                 // , urls: [
+                 //   "https://c1.staticflickr.com/9/8121/8686001144_4ae5268a38_b.jpg",
+                 //   "https://c2.staticflickr.com/6/5272/14017380707_5d73fc0cb3_b.jpg"
+                 //]
+                 //, url : "http://www.inkwelleditorial.com/pdfSample.pdf"            }  );
+    
+    
+    }
+}
+
+
+```
+
+
 
 Installation Instruction
 ========================
