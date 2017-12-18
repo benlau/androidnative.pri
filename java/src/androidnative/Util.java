@@ -30,6 +30,7 @@ public class Util {
     public static final String GET_SMS_MESSAGE = "androidnative.Util.getSMSMessages";
     public static final String GOT_SMS_MESSAGE = "androidnative.Util.gotSMSMessages";
     public static final String MAKE_CALL_MESSAGE = "androidnative.Util.makeCall";
+    public static final String SEND_TO_BG = "androidnative.Util.sendToBackground";
 
 
     static {
@@ -43,6 +44,8 @@ public class Util {
                     getSMSMessages(message);
                 } else if (type.equals(MAKE_CALL_MESSAGE)) {
                     makeCall(message);
+                } else if (type.equals(SEND_TO_BG)) {
+                    sendToBackground();
                 }
             }
         });
@@ -225,5 +228,13 @@ public class Util {
             Activity activity = org.qtproject.qt5.android.QtNative.activity();
             activity.startActivity(intent);
         }
+    }
+
+    static void sendToBackground() {
+          Intent intent = new Intent();
+          intent.setAction(Intent.ACTION_MAIN);
+          intent.addCategory(Intent.CATEGORY_HOME);
+          Activity activity = org.qtproject.qt5.android.QtNative.activity();
+          activity.startActivity(intent);
     }
 }

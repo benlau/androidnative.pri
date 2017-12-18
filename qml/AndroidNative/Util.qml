@@ -14,6 +14,7 @@ Item {
     property string m_GOTSMS_MESSAGE: "androidnative.Util.gotSMSMessages";
 
     property string m_MAKE_CALL_MESSAGE: "androidnative.Util.makeCall";
+    property string m_SEND_TO_BACKGROUND: "androidnative.Util.sendToBackground";
 
     property bool callInitiated  : false;
     property bool callInProgress : false;
@@ -53,6 +54,10 @@ Item {
 
         callInitiated = true;
         SystemDispatcher.dispatch( m_MAKE_CALL_MESSAGE , args );
+    }
+
+    function sendToBackground() {
+        SystemDispatcher.dispatch( m_SEND_TO_BACKGROUND);
     }
 
     Connections {
