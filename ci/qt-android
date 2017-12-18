@@ -10,7 +10,7 @@ echo Create qt.env
 cat << EOF > qt.env
 export QT_ROOT=$PWD/Qt
 export QT_HOME=$PWD/Qt/5.7
-export PATH=$PWD/Qt/5.7/android_armv7/bin:$PWD/android-sdk-linux/tools:$PATH
+export PATH="$PWD/Qt/5.7/android_armv7/bin:$PWD/android-sdk-linux/tools:$PATH"
 #export ANDROID_NDK_ROOT=$PWD/android-ndk-r10c
 #export ANDROID_SDK_ROOT=$PWD/android-sdk-linux
 EOF
