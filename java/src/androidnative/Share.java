@@ -190,7 +190,7 @@ public class Share {
             Activity activity = org.qtproject.qt5.android.QtNative.activity();
 
             File baseDir=activity.getExternalFilesDir(null);
-            String fileName = Uri.parse(urlString).getLastPathSegment();
+            String fileName = Uri.parse(Uri.decode(urlString)).getLastPathSegment();
 
             File localFile = null ;
 
