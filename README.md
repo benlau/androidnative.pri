@@ -19,6 +19,7 @@ Features
   1. SMS Inbox reader (via Util component)
   1. make a phone call, makeCall (via Util component)
   1. sharing content using ACTION_SEND (via Share component)
+  1. Querying and Handling of GPS Settings (via Util component)
  1. Wrapper of 	android.os.Environment / android.os.Debug / MediaScannerConnection
 
 C++ API

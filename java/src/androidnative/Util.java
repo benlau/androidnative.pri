@@ -10,6 +10,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException ;
+import android.location.LocationManager;
+import android.provider.Settings;
+
 
 import org.qtproject.qt5.android.QtNative;
 
@@ -29,6 +32,9 @@ public class Util {
     public static final String SET_FULL_SCREEN = "androidnative.Util.setFullScreen";
     public static final String GET_SMS_MESSAGE = "androidnative.Util.getSMSMessages";
     public static final String GOT_SMS_MESSAGE = "androidnative.Util.gotSMSMessages";
+    public static final String GET_GPS_STATUS_MSG  = "androidnative.Util.getGPSStatus";
+    public static final String GOT_GPS_STATUS_MSG  = "androidnative.Util.gotGPSStatus";
+    public static final String OPEN_GPS_SETTING    = "androidnative.Util.openGPSSetting";
     public static final String MAKE_CALL_MESSAGE = "androidnative.Util.makeCall";
     public static final String SEND_TO_BG = "androidnative.Util.sendToBackground";
 
@@ -46,6 +52,10 @@ public class Util {
                     makeCall(message);
                 } else if (type.equals(SEND_TO_BG)) {
                     sendToBackground();
+                } else if (type.equals(GET_GPS_STATUS_MSG)) {
+                    getGPSStatus();
+                } else if (type.equals(OPEN_GPS_SETTING)) {
+                    openGPSSettings();
                 }
             }
         });
@@ -234,6 +244,21 @@ public class Util {
           Intent intent = new Intent();
           intent.setAction(Intent.ACTION_MAIN);
           intent.addCategory(Intent.CATEGORY_HOME);
+          Activity activity = org.qtproject.qt5.android.QtNative.activity();
+          activity.startActivity(intent);
+    }
+
+    static void getGPSStatus() {
+          Activity activity = org.qtproject.qt5.android.QtNative.activity();
+          LocationManager manager = (LocationManager) activity.getSystemService( activity.LOCATION_SERVICE );
+          boolean gpsstatus = manager.isProviderEnabled( LocationManager.GPS_PROVIDER );
+          Map reply = new HashMap();
+          reply.put("gpsstatus", gpsstatus );
+          SystemDispatcher.dispatch(GOT_GPS_STATUS_MSG,reply);
+    }
+
+    static void openGPSSettings() {
+          Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
           Activity activity = org.qtproject.qt5.android.QtNative.activity();
           activity.startActivity(intent);
     }
