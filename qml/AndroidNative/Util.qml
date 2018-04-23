@@ -9,15 +9,25 @@ Item {
 
     signal smsFetched();
     signal callFinished();
+    signal gpsStatusFound(bool gpsstatus ) ;
 
     property string m_GETSMS_MESSAGE: "androidnative.Util.getSMSMessages";
     property string m_GOTSMS_MESSAGE: "androidnative.Util.gotSMSMessages";
+
+    property string   m_GET_GPS_STATUS: "androidnative.Util.getGPSStatus";
+    property string   m_GOT_GPS_STATUS: "androidnative.Util.gotGPSStatus";
+    property string m_OPEN_GPS_SETTING: "androidnative.Util.openGPSSetting";
 
     property string m_MAKE_CALL_MESSAGE: "androidnative.Util.makeCall";
     property string m_SEND_TO_BACKGROUND: "androidnative.Util.sendToBackground";
 
     property bool callInitiated  : false;
     property bool callInProgress : false;
+
+
+    property bool settingsOpened  : false;
+    property bool settingsInProgress : false;
+    signal settingsDone();
 
 
     function getSMSMessages(params) {
@@ -60,6 +70,15 @@ Item {
         SystemDispatcher.dispatch( m_SEND_TO_BACKGROUND);
     }
 
+    function getGPSStatus() {
+        SystemDispatcher.dispatch( m_GET_GPS_STATUS);
+    }
+
+    function openGPSSettings() {
+        settingsOpened = true;
+        SystemDispatcher.dispatch( m_OPEN_GPS_SETTING);
+    }
+
     Connections {
         target: SystemDispatcher
         onDispatched: {
@@ -67,6 +86,9 @@ Item {
                 smsMessages = message.messages ;
                 smsMessagesCount = message.messagesCount;
                 smsFetched();
+            }
+            if (type === m_GOT_GPS_STATUS ) {
+                gpsStatusFound(message.gpsstatus);
             }
         }
     }
@@ -95,6 +117,18 @@ Item {
                  callInitiated  = false;
                 // emit signal.
                  callFinished();
+            }
+
+            if ( settingsOpened  &&  Qt.application.state ==Qt.ApplicationSuspended  ) {
+                settingsInProgress = true;
+            }
+
+            if (settingsInProgress  && Qt.application.state == Qt.ApplicationActive ) {
+                // flip back the bools.
+                settingsInProgress = false;
+                settingsOpened = false;
+                // emit signal.
+                settingsDone();
             }
         }
     }
