@@ -9,7 +9,7 @@ Page {
 
     actionBar: ActionBar {
         id : actionBar
-        title: "Notification"
+        title: qsTr("Notification")
         z: 10
         upEnabled: true
         onActionButtonClicked: back();
@@ -21,8 +21,8 @@ Page {
         anchors.centerIn: parent
         onClicked: {
             AN.SystemDispatcher.dispatch("Notifier.notify",{
-                title: "Quick Android Example",
-                message: "Hello!"
+                title: qsTr("Quick Android Example"),
+                message: qsTr("Hello!")
             });
         }
     }

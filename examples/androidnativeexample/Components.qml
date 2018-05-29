@@ -35,7 +35,7 @@ Page {
     actionBar: ActionBar {
         id : actionBar
         iconSource: A.drawable("ic_menu",Constants.black87)
-        title: "AndroidNative Component List"
+        title: qsTr("AndroidNative Component List")
         showIcon: false
         actionButtonEnabled: false
     }

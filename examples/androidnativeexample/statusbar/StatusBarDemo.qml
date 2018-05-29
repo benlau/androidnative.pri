@@ -10,7 +10,7 @@ Page {
 
     actionBar: ActionBar {
         id : actionBar
-        title: "Status Bar"
+        title: qsTr("Status Bar")
         z: 10
         upEnabled: true
         onActionButtonClicked: back();
@@ -20,7 +20,7 @@ Page {
         anchors.centerIn: parent
 
         QQC2.Switch {
-            text: "Translucent Status Bar"
+            text: qsTr("Translucent Status Bar")
             checked: false
 
             onCheckedChanged: {
@@ -29,7 +29,7 @@ Page {
         }
 
         QQC2.Switch {
-            text: "Status Bar Visible"
+            text: qsTr("Status Bar Visible")
             checked: true
 
             onCheckedChanged: {

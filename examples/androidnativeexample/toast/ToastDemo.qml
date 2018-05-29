@@ -9,7 +9,7 @@ Page {
 
     actionBar: ActionBar {
         id : actionBar
-        title: "Toast"
+        title: qsTr("Toast")
         z: 10
         upEnabled: true
         onActionButtonClicked: back();
@@ -17,7 +17,7 @@ Page {
 
     AN.Toast {
         id: toast
-        text: "Toast"
+        text: qsTr("Toast")
         longDuration: true
     }
 

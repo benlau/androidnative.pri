@@ -27,9 +27,9 @@ Page {
     Dialog {
         id: dialog
         anchors.centerIn: parent
-        title: "Dialog"
+        title: qsTr("Dialog")
         Text {
-            text: "Demo"
+            text: qsTr("Demo")
         }
         z: 20
 

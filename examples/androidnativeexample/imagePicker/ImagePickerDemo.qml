@@ -6,7 +6,7 @@ import "../theme"
 Page {
     id: demo
     actionBar: ActionBar {
-        title: "Image Picker Demo"
+        title: qsTr("Image Picker Demo")
         onActionButtonClicked: back();
     }
 
