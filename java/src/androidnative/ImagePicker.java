@@ -16,6 +16,7 @@ import android.os.Environment;
 import android.content.ClipData;
 import java.util.List;
 import java.util.ArrayList;
+import androidx.core.content.FileProvider;
 
 public class ImagePicker {
 
@@ -69,13 +70,16 @@ public class ImagePicker {
             broadcast = (Boolean) message.get("broadcast");
         }
 
+        Activity activity = org.qtproject.qt5.android.QtNative.activity();
+
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss").format(new Date());
         File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
         if(!storageDir.exists() && !storageDir.mkdir())
             return;
 
         File image = new File(storageDir.getAbsolutePath() + "/" + timeStamp + ".jpg");
-        mPhotoUri = Uri.fromFile(image);
+        String applicationId = (String) Util.getBuildConfigValue(activity, "APPLICATION_ID");
+        mPhotoUri = FileProvider.getUriForFile(activity , applicationId + ".provider", image );
 
         Log.d(TAG,"takePhoto : " + mPhotoUri);
 
@@ -85,7 +89,6 @@ public class ImagePicker {
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
-        Activity activity = org.qtproject.qt5.android.QtNative.activity();
         activity.startActivityForResult(intent,TAKE_PHOTO_ACTION);
     }
 
