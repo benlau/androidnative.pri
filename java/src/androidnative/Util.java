@@ -262,4 +262,20 @@ public class Util {
           Activity activity = org.qtproject.qt5.android.QtNative.activity();
           activity.startActivity(intent);
     }
+
+// thanks: https://stackoverflow.com/questions/21365928/gradle-how-to-use-buildconfig-in-an-android-library-with-a-flag-that-gets-set
+    public static Object getBuildConfigValue(Context context, String fieldName) {
+      try {
+            Class<?> clazz = Class.forName(context.getPackageName() + ".BuildConfig");
+            Field field = clazz.getField(fieldName);
+            return field.get(null);
+      } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+      } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+      } catch (IllegalAccessException e) {
+            e.printStackTrace();
+      }
+        return null;
+    }
 }
